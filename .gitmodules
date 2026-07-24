@@ -4,3 +4,6 @@
 [submodule "thesis_vault"]
 	path = thesis_vault
 	url = https://github.com/Darsh-A/mThesis-Obsidian.git
+[submodule "Reports"]
+	path = Reports
+	url = https://github.com/Darsh-A/mThesis-Reports.git
