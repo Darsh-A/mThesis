@@ -1,0 +1,6 @@
+[submodule "hartwig_ems"]
+	path = hartwig_ems
+	url = https://github.com/Darsh-A/mThesis-EMUc.git
+[submodule "thesis_vault"]
+	path = thesis_vault
+	url = https://github.com/Darsh-A/mThesis-Obsidian.git
