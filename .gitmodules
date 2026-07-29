@@ -7,3 +7,6 @@
 [submodule "Reports"]
 	path = Reports
 	url = https://github.com/Darsh-A/mThesis-Reports.git
+[submodule "pawsno"]
+	path = pawsno
+	url = https://github.com/Darsh-A/paws.git
