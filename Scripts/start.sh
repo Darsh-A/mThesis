@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
-cd "$(dirname "$0")"
+echo "PWD=$PWD"
+echo "SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+pwd
 
 source .venv/bin/activate
 
@@ -12,7 +14,7 @@ OPENCODE_PID=$!
 
 sleep 2
 
-ngrok http 4096 --log=stdout > /tmp/ngrok_thesis.log 2>&1 &
+ngrok http 4096 --log=stdout >/tmp/ngrok_thesis.log 2>&1 &
 NGROK_PID=$!
 
 sleep 3
