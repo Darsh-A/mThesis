@@ -1,0 +1,18 @@
+noiseless
+  none           base=0.500 Zn:+0.387 Co:+0.359 Cu:+0.354 C:+0.277
+  Zn             base=0.887 Si:+0.078 Ca:+0.069 Mn:+0.065 Mg:+0.065
+  Cu             base=0.854 Si:+0.108 Ca:+0.096 Mn:+0.093 Mg:+0.091
+  Zn + Co        base=0.925 Si:+0.054 Ca:+0.047 Mg:+0.047 C:+0.045
+  Zn + Na        base=0.921 Si:+0.065 Ca:+0.058 Mn:+0.052 Mg:+0.051
+  Zn + Cu        base=0.919 Si:+0.058 Ca:+0.051 Mg:+0.046 Mn:+0.046
+  core 7         base=0.992 C:+0.000 Mn:-0.000 Zn:-0.001 Co:-0.001
+  core 7 + Zn    base=0.991 C:+0.001 Mn:+0.000 Co:+0.000 Cu:-0.000
+  full           base=0.991 
+observed
+  none           base=0.500 Zn:+0.345 Co:+0.237 Na:+0.203 C:+0.149
+  Zn             base=0.845 Si:+0.085 Ca:+0.066 Mn:+0.053 Mg:+0.048
+  Zn + Co        base=0.861 Si:+0.080 Ca:+0.063 Mg:+0.048 Mn:+0.048
+  Zn + Na        base=0.866 Si:+0.088 Ca:+0.068 Mn:+0.050 Mg:+0.046
+  core 7         base=0.941 Zn:+0.023 Co:+0.005 C:+0.004 Mn:+0.002
+  core 7 + Zn    base=0.964 C:+0.001 Co:+0.001 Mn:+0.001
+  full           base=0.967 

@@ -1,0 +1,669 @@
+import glob
+import os
+import re
+
+from .utils import _isotope_label, _isotope_to_element
+from params import heger_woosley_2002_yields, ishigaki_2018_yields, ishigaki18_selected_yields, ww95_1Z, limongi18_yields, nomoto_ck13_yields, obs_li_params, obs_li_abundances
+
+def load_hw2002(filepath: str=heger_woosley_2002_yields) -> list[dict]:
+    """Load Heger & Woosley 2002 yields.
+
+    Fixed-width format:
+      header:  isotope <mass_he_1> <mass_he_2> ... <mass_x>
+      rows:    <isotope> <yield_at_mass_he_1> ...
+
+    The column header values are He-core masses.
+
+    Returns:
+    [
+        {
+            "label": "M=12",
+            "params": {"mass": 12, "mass_he": 6},
+            "yields": {"H1": 0.1, "He4": 0.2, ...},
+        },
+        ...
+    ]
+    """
+    with open(filepath) as f:
+        lines = f.readlines()
+
+    header_parts = lines[0].split()
+    mass_he_values = [float(v) for v in header_parts[1:]]
+    mass_he_to_total = lambda mass_he: mass_he * 2 + 10
+
+    entries = []
+    for ei, mass_he in enumerate(mass_he_values):
+        mass = mass_he_to_total(mass_he)
+        yld = {}
+        for line in lines[1:]:
+            parts = line.split()
+            if len(parts) < ei + 2:
+                continue
+            label = _isotope_label(parts[0])
+            val = float(parts[ei + 1])
+            yld[label] = val
+
+        entries.append({
+            "label": f"M={mass:.0f}",
+            "params": {"mass": mass, "mass_he": mass_he},
+            "yields": yld,
+        })
+
+    return entries
+
+
+def load_ishigaki(data_dir: str=ishigaki_2018_yields) -> list[dict]:
+    """Load Ishigaki+18 *fort.10.dat files (skip Natoms_*).
+
+    Tab-separated, header row with isotope names, one data row per model.
+    First 6 columns after the index are parameters; remaining columns are
+    per-isotope mass yields.
+
+    Mass values: [11, 13, 15, 25, 40, 100]
+
+    Returns:
+    [
+        {
+            "label": "M=12 E=1.00",
+            "params": {"mass": 12, "energy": 1.0, "Mcut": 1.0, "MCO": 1.0, "Mout": 1.0, "lfej": 1.0},
+            "yields": {"H1": 0.1, "He4": 0.2, ...}
+        },
+        ...
+    ]
+    """
+    pattern = os.path.join(data_dir, "M*_fort.10.dat")
+    files = sorted(glob.glob(pattern))
+
+    entries = []
+    for filepath in files:
+        with open(filepath) as f:
+            lines = f.readlines()
+
+        if len(lines) < 2:
+            continue
+
+        header_parts = lines[0].strip().split('\t')
+        iso_names = header_parts[6:]   # skip mass,energy,Mcut,MCO,Mout,lfej
+        iso_labels = [_isotope_label(n) for n in iso_names]
+
+        for line in lines[1:]:
+            parts = line.strip().split('\t')
+            if len(parts) < 7 + len(iso_names):
+                continue
+
+            param_vals = [float(p) for p in parts[1:7]]
+            yield_vals = [float(v) for v in parts[7:]]
+            mass, energy, mcut, mco, mout, lfej = param_vals
+
+            yld = {}
+            for iso, val in zip(iso_labels, yield_vals):
+                yld[iso] = val
+
+            entries.append({
+                "label": f"M={mass:.0f}",
+                "params": {"mass": mass, "energy": energy, "Mcut": mcut,
+                           "MCO": mco, "Mout": mout, "lfej": lfej},
+                "yields": yld,
+            })
+
+    return entries
+
+def load_ishigaki_selected(data_dir: str = ishigaki18_selected_yields,) -> list[dict]:
+    """Load Ishigaki+18 selected yields from a TSV file (from hartwig chi2 analysis)"""
+
+    entries = []
+
+    with open(data_dir) as f:
+        lines = f.readlines()
+
+    if len(lines) < 2:
+        return entries
+
+    header = lines[0].strip().split("\t")
+
+    # First 6 columns are metadata; everything after is an element.
+    element_names = header[6:]
+
+    for line in lines[1:]:
+        parts = line.strip().split("\t")
+
+        if len(parts) < 6 + len(element_names):
+            continue
+
+        mass = float(parts[0])
+        energy = float(parts[1])
+        mcut = float(parts[2])
+        mco = float(parts[3])
+        mout = float(parts[4])
+        lfej = float(parts[5])
+
+        # Elements start at column 6.
+        yield_vals = [float(v) for v in parts[6:]]
+
+        yields = {
+            element: value
+            for element, value in zip(element_names, yield_vals)
+        }
+
+        entries.append({
+            "label": f"M={mass:.0f}",
+            "params": {
+                "mass": mass,
+                "energy": energy,
+                "Mcut": mcut,
+                "MCO": mco,
+                "Mout": mout,
+                "lfej": lfej,
+            },
+            "yields": yields,
+        })
+
+    return entries
+
+def load_takahashi(data_dir="data/raw/Takahashi_PISN"):
+    """Load Takahashi+19 PISN yield files from the raw CDS/MRT format.
+
+    Each .txt file is one model.  Model type and initial mass are parsed
+    from the filename (e.g. nr280.txt -> NR, 280).
+
+    Returns dict: model_type -> list[YieldEntry]
+        {"NR": [...], "NM": [...], "MR": [...]}
+    """
+    files = sorted(glob.glob(os.path.join(data_dir, "*.txt")))
+    by_model = {}
+
+    for filepath in files:
+        with open(filepath) as f:
+            lines = f.readlines()
+
+        basename = os.path.splitext(os.path.basename(filepath))[0]
+        model_type = basename[:2].upper()
+        mass = int(basename[2:])
+
+        yld = {}
+        for line in lines:
+            if not (line.startswith('NR ') or line.startswith('NM ') or
+                    line.startswith('MR ')):
+                continue
+            parts = line.split()
+            if len(parts) < 4:
+                continue
+            elem = _isotope_to_element(parts[2])
+            try:
+                val = float(parts[3])
+            except ValueError:
+                continue
+            yld[elem] = yld.get(elem, 0.0) + val
+
+        if yld:
+            entry = {
+                "label": f"{model_type} M={mass}",
+                "params": {"mass": mass, "model_type": model_type},
+                "yields": yld,
+            }
+            by_model.setdefault(model_type, []).append(entry)
+
+    return by_model
+
+
+def load_ww95(filepath: str = ww95_1Z) -> list[dict]:
+    """Load Woosley & Weaver 1995 yields (Tables 5A+5B).
+
+    TSV with a header row of model labels (S11A ... S40C) and one row per
+    isotope. Model labels encode initial mass and model series (A/B/C):
+    S30A and S30B share the same mass but differ by series.
+
+    Returns:
+    [
+        {
+            "label": "30A",
+            "params": {"mass": 30, "model": "A"},
+            "yields": {"H1": 0.1, "He4": 0.2, ...},
+        },
+        ...
+    ]
+    """
+    with open(filepath) as f:
+        lines = f.readlines()
+
+    model_cols = lines[0].strip().split('\t')[3:]
+
+    entries = []
+    for ei, model in enumerate(model_cols):
+        label = model[1:]
+        mass = int(label[:-1])
+        model_type = label[-1]
+
+        yld = {}
+        for line in lines[1:]:
+            parts = line.strip().split('\t')
+            if len(parts) < 4 + ei:
+                continue
+            # Row type column (parts[1]) is "yield" in Tables 5A/5B but
+            # "isotope" in Tables 12A/12B; the isotope name in parts[2] is
+            # the reliable discriminator for yield rows in both files.
+            m = re.match(r'(\d+)([A-Za-z]+)', parts[2])
+            if not m:
+                continue
+            iso = m.group(2).capitalize() + m.group(1)
+            yld[iso] = float(parts[3 + ei])
+
+        entries.append({
+            "label": label,
+            "params": {"mass": mass, "model": model_type},
+            "yields": yld,
+        })
+
+    return entries
+
+
+def load_limongi18(filepath: str = limongi18_yields) -> list[dict]:
+    """Load Limongi & Chieffi 2018 total elemental yields (Set R).
+
+    Explosive yields with unstable nuclei fully decayed (`.dec`), summed
+    over isotopes into elements (`ele`).  The file is split into blocks of
+    54 lines: one header row naming the nine mass columns, followed by 53
+    element rows:
+
+        <element> <Z> <A> <initial> <13M> <15M> ... <120M>
+
+    Each mass column is named `xxxmyyy` where xxx is the initial mass
+    (013..120), m encodes [Fe/H] (a=0, b=-1, c=-2, d=-3) and yyy is the
+    rotational velocity (000/150/300).  Only the element name and the nine
+    yield values are used; the Z/A/initial columns are ignored.
+
+    Models are the ([Fe/H], velocity, mass) combinations: 4 metallicities
+    x 3 velocities x 9 initial masses [13, 15, 20, 25, 30, 40, 60, 80, 120].
+
+    Returns:
+    [
+        {
+            "label": "M=13 v=0 [Fe/H]=0",
+            "params": {"mass": 13, "velocity": 0, "feh": 0},
+            "yields": {"H": 6.16, "He": 4.63, ..., "Bi": 0.0},
+        },
+        ...
+    ]
+    """
+    masses = [13, 15, 20, 25, 30, 40, 60, 80, 120]
+    feh_map = {"a": 0, "b": -1, "c": -2, "d": -3}
+
+    with open(filepath) as f:
+        lines = f.readlines()
+
+    # Each block starts with a header row naming the mass columns; the name
+    # encodes the model's [Fe/H] and rotational velocity.  Group the element
+    # rows that follow by that model so each entry can be built column-wise.
+    current_model = None
+    rows_by_model = {}
+    for line in lines:
+        parts = line.split()
+        if not parts:
+            continue
+
+        if parts[0] == "ele":
+            col = parts[4]  # e.g. "013a000"
+            feh = feh_map[col[3]]
+            velocity = int(col[4:])
+            current_model = (feh, velocity)
+            rows_by_model[current_model] = []
+            continue
+
+        name = _isotope_label(parts[0])  # element names pass through as-is
+        values = [float(v) for v in parts[4:4 + len(masses)]]
+        rows_by_model[current_model].append((name, values))
+
+    entries = []
+    for (feh, velocity), rows in rows_by_model.items():
+        for mi, mass in enumerate(masses):
+            yields = {name: vals[mi] for name, vals in rows}
+            entries.append({
+                "label": f"M={mass} v={velocity} [Fe/H]={feh}",
+                "params": {"mass": mass, "velocity": velocity, "feh": feh},
+                "yields": yields,
+            })
+
+    return entries
+
+
+def load_nomoto13(filepath: str = nomoto_ck13_yields) -> list[dict]:
+    """Load Nomoto, Kobayashi & Tominaga (2013) yields (YIELD_CK13.dat).
+
+    The file is a sequence of fixed-width blocks, one per metallicity.  Each
+    block is:
+
+        Z=     <Z>                  # metallicity (mass fraction)
+        M      <m1> ... <mN>        # initial mass (Msun), one per model
+        E      <e1> ... <eN>        # explosion energy (10^51 erg)
+        Mrem   <r1> ... <rN>        # remnant mass (Msun)
+        <elem> <A>  <y1> ... <yN>   # per-isotope ejected mass (Msun)
+
+        Z	      M (M☉) with E=1	            Mrem (M☉)
+        0.0010	  13, 15, 18, 20, 25, 30, 40	1.65, 1.53, 1.70, 1.85, 1.91, 2.06, 3.17
+        0.0040	  13, 15, 18, 20, 25, 30, 40	1.61, 1.50, 2.143, 1.76, 1.68, 2.56, 2.81
+        0.0080	  13, 15, 18, 20, 25, 30, 40	1.606, 1.50, 1.901, 1.67, 1.734, 2.362, 2.552
+        0.0200	  13, 15, 18, 20, 25, 30, 40	1.60, 1.50, 1.58, 1.55, 1.804, 2.10, 2.21
+        0.0500	  13, 15, 18, 20, 25, 30, 40	1.54, 1.62, 1.46, 1.63, 1.88, 2.32, 2.28
+
+    Returns:
+    [
+        {
+            "label": "Z=0.02 M=20 E=1",
+            "params": {"Z": 0.02, "mass": 20.0, "energy": 1.0, "Mrem": 1.66},
+            "yields": {"H1": 0.1, "He4": 0.2, ...},
+        },
+        ...
+    ]
+    """
+    with open(filepath) as f:
+        lines = f.readlines()
+
+    entries = []
+    i = 0
+    n_lines = len(lines)
+    while i < n_lines:
+        parts = lines[i].split()
+        if not parts or not parts[0].startswith("Z="):
+            i += 1
+            continue
+
+        z = float(lines[i].split("=")[1])
+        masses = [float(v) for v in lines[i + 1].split()[1:]]
+        energies = [float(v) for v in lines[i + 2].split()[1:]]
+        mrems = [float(v) for v in lines[i + 3].split()[1:]]
+
+        # Collect isotope rows until the next block (or EOF).
+        iso_yields = {}  # isotope label -> list of per-model values
+        j = i + 4
+        while j < n_lines:
+            row = lines[j].split()
+            if not row:
+                j += 1
+                continue
+            if row[0].startswith("Z="):
+                break
+            if len(row) < 2 + len(masses):
+                j += 1
+                continue
+            label = _isotope_label(row[0] + row[1])
+            iso_yields[label] = [float(v) for v in row[2:]]
+
+            j += 1
+
+        for k, mass in enumerate(masses):
+            entries.append({
+                "label": f"Z={z:g} M={mass:g} E={energies[k]:g}",
+                "params": {
+                    "Z": z,
+                    "mass": mass,
+                    "energy": energies[k],
+                    "Mrem": mrems[k],
+                },
+                "yields": {iso: vals[k] for iso, vals in iso_yields.items()},
+            })
+
+        i = j
+
+    return entries
+
+
+# --- Observed Li+22 (LAMOST/Subaru) very metal-poor stars ---
+# Fixed-width MRT tables: Table 2 = stellar parameters (one row/star),
+# Table 3 = elemental abundances (one row/ion/star). Column specs are
+# (start, end) byte positions, 1-indexed inclusive, from the file headers.
+
+_OBS_LI_PARAM_FIELDS = [
+    (1, 10, "ID", str),
+    (13, 22, "RAdeg", float),
+    (24, 32, "DEdeg", float),
+    (34, 39, "RVel", float),
+    (41, 45, "SNR", float),
+    (47, 50, "Teff", int),
+    (52, 54, "e_Teff", int),
+    (56, 59, "logg", float),
+    (61, 64, "e_logg", float),
+    (66, 70, "FeH", float),
+    (72, 75, "e_FeH", float),
+    (77, 80, "vt", float),
+    (82, 85, "e_vt", float),
+    (87, 92, "logL", float),
+    (94, 98, "e_logL", float),
+    (100, 100, "f_logg", int),
+    (102, 105, "Teff_LAMOST", int),
+    (107, 110, "logg_LAMOST", float),
+    (112, 116, "FeH_LAMOST", float),
+]
+
+_OBS_LI_ABUND_FIELDS = [
+    (1, 10, "ID", str),
+    (13, 16, "Ion", str),
+    (18, 18, "l_logeps", str),
+    (20, 24, "logeps", float),
+    (26, 26, "l_XFe", str),
+    (28, 32, "XFe", float),
+    (34, 38, "sigma_Teff", float),
+    (40, 44, "sigma_logg", float),
+    (46, 50, "sigma_FeH", float),
+    (52, 56, "sigma_vt", float),
+    (58, 61, "sigma_N", float),
+    (63, 66, "sigma_Total", float),
+    (68, 70, "Nlines", int),
+]
+
+
+def _parse_obs_li_rows(lines: list[str], fields: list[tuple]) -> list[dict]:
+    """Parse fixed-width MRT data rows, identified by a J-prefixed ID."""
+    rows = []
+    for line in lines:
+        raw = line.rstrip("\n").rstrip("\r")
+        first_end = fields[0][1]
+        if len(raw) < first_end:
+            continue
+        if not raw[fields[0][0] - 1:first_end].strip().startswith("J"):
+            continue
+        row = {}
+        for start, end, name, conv in fields:
+            val = raw[start - 1:end].strip() if len(raw) >= end else ""
+            if val == "":
+                row[name] = None
+            elif conv is str:
+                row[name] = val
+            else:
+                try:
+                    row[name] = conv(val)
+                except (ValueError, TypeError):
+                    row[name] = None
+        rows.append(row)
+    return rows
+
+
+def load_obs_li(
+    params_file: str = obs_li_params,
+    abundance_file: str = obs_li_abundances,
+) -> list[dict]:
+    """Load the Li+22 very metal-poor star catalogue, merged into one entry per star.
+
+    Combines the two machine-readable tables:
+      * Table 2 (stellar parameters, one row per star)
+      * Table 3 (elemental abundances, one row per ion)
+
+    Returns a list of per-star dicts:
+
+        {
+            "label": "J0002+0343",
+            "params": {  # stellar parameters from Table 2
+                "RAdeg", "DEdeg", "RVel", "SNR",
+                "Teff", "e_Teff", "logg", "e_logg", "FeH", "e_FeH",
+                "vt", "e_vt", "logL", "e_logL", "f_logg",
+                "Teff_LAMOST", "logg_LAMOST", "FeH_LAMOST",
+            },
+            "abundances": {  # per-ion records from Table 3
+                "FeI": {"logeps": ..., "XFe": ..., "l_logeps": ...,
+                        "l_XFe": ..., "sigma_*": ..., "Nlines": ...},
+                ...
+            },
+        }
+
+    Upper limits have l_logeps / l_XFe == "<"; blank (unmeasured) cells are
+    None. Stars missing from one table get an empty dict for that section.
+    """
+    with open(params_file) as f:
+        param_rows = _parse_obs_li_rows(f.readlines(), _OBS_LI_PARAM_FIELDS)
+    with open(abundance_file) as f:
+        abund_rows = _parse_obs_li_rows(f.readlines(), _OBS_LI_ABUND_FIELDS)
+
+    params_by_id = {r["ID"]: {k: v for k, v in r.items() if k != "ID"} for r in param_rows}
+    abund_by_id = {}
+    for r in abund_rows:
+        star = abund_by_id.setdefault(r["ID"], {})
+        star[r["Ion"]] = {k: v for k, v in r.items() if k not in ("ID", "Ion")}
+
+    entries = []
+    seen = set()
+    for r in param_rows:
+        sid = r["ID"]
+        entries.append({
+            "label": sid,
+            "params": params_by_id[sid],
+            "abundances": abund_by_id.get(sid, {}),
+        })
+        seen.add(sid)
+    for sid, ab in abund_by_id.items():
+        if sid not in seen:
+            entries.append({"label": sid, "params": {}, "abundances": ab})
+
+    return entries
+
+
+# --- Observed Xiang+2019 (LAMOST DR5) ---
+# DDPayne_LAMOST-DR5_recommend.fits (J/ApJS/245/34, ~8.16M stars). Per-star
+# element abundances are [X/Fe] directly (no ion stage), stored in {EL}_FE
+# columns with {EL}_FE_FLAG (1 = reliable) and {EL}_FE_ERR (dex error).
+# Missing values are encoded as -999.0 (NOT NaN). Fe is the reference element
+# ([Fe/H] = FEH column), so it is not among the per-element columns.
+
+# Element symbol -> FITS column code (e.g. Na -> "NA_FE", Mg -> "MG_FE").
+_XIANG_ELEMENT_COLUMN = {
+    "C": "C", "N": "N", "O": "O", "Na": "NA", "Mg": "MG", "Al": "AL",
+    "Si": "SI", "Ca": "CA", "Ti": "TI", "Cr": "CR", "Mn": "MN",
+    "Co": "CO", "Ni": "NI", "Cu": "CU",
+}
+
+# The 14 non-Fe elements Xiang measures (Fe is the reference, carried in
+# params["FeH"]). Same order as the 15-element training set minus Fe.
+XIANG_ELEMENTS = [
+    "C", "N", "O", "Na", "Mg", "Al", "Si", "Ca", "Ti", "Cr", "Mn",
+    "Co", "Ni", "Cu",
+]
+
+_XIANG_FITS = "data/raw/Obs_XiangLamost/DDPayne_LAMOST-DR5_recommend.fits"
+
+
+def load_obs_xiang(
+    filepath: str = _XIANG_FITS,
+    feh_range: tuple[float, float] = (-3.0, -1.5),
+    elements: list[str] | None = None,
+    n_max: int | None = None,
+    seed: int = 0,
+) -> list[dict]:
+    """Load Xiang+2019 (LAMOST DR5) stars, merged into one entry per star.
+
+    Reads the DDPayne recommended FITS catalogue and selects stars with a
+    reliable [Fe/H] in ``feh_range`` (default [-3, -1.5)).  For each element,
+    an abundance is observed iff the quality flag is reliable
+    (``{EL}_FE_FLAG == 1``) and the value is not the -999.0 missing sentinel.
+
+    If ``n_max`` is given and fewer stars are selected, a reproducible random
+    subsample of that size (seeded by ``seed``) is returned instead of the full
+    catalogue.
+
+    Returns a list of per-star dicts with the same top-level shape as
+    ``load_obs_li``:
+
+        {
+            "label": STARID,
+            "params": {"RAdeg","DEdeg","Teff","e_Teff","logg","e_logg",
+                       "FeH","e_FeH","SNR"},
+            "abundances": {
+                "C": {"logeps","XFe","sigma_Total","reliable"},
+                ...
+            },
+        }
+
+    ``abundances`` is keyed by element symbol (Fe excluded).  ``logeps`` and
+    ``XFe`` hold the [X/Fe] value when reliable, else None; ``sigma_Total``
+    is the reported {EL}_FE_ERR (None when unreliable).
+    """
+    import numpy as np
+    from astropy.io import fits
+
+    if elements is None:
+        elements = XIANG_ELEMENTS
+
+    lo, hi = feh_range
+
+    with fits.open(filepath, memmap=True) as hdul:
+        data = hdul[1].data
+        sel = (data["FEH"] >= lo) & (data["FEH"] < hi) & (data["FEH_FLAG"] == 1)
+        idx = np.flatnonzero(sel)
+
+        if n_max is not None and len(idx) > n_max:
+            rng = np.random.default_rng(seed)
+            idx = np.sort(rng.choice(idx, size=n_max, replace=False))
+
+        starid = data["STARID"][idx].astype(str)
+        ra = data["RA"][idx].astype(float)
+        dec = data["DEC"][idx].astype(float)
+        teff = data["TEFF"][idx].astype(float)
+        teff_err = data["TEFF_ERR"][idx].astype(float)
+        logg = data["LOGG"][idx].astype(float)
+        logg_err = data["LOGG_ERR"][idx].astype(float)
+        feh = data["FEH"][idx].astype(float)
+        feh_err = data["FEH_ERR"][idx].astype(float)
+        snr = data["SNR_G"][idx].astype(float)
+
+        el_vals = {}
+        el_errs = {}
+        el_flags = {}
+        for el in elements:
+            code = _XIANG_ELEMENT_COLUMN[el]
+            el_vals[el] = data[f"{code}_FE"][idx].astype(float)
+            el_errs[el] = data[f"{code}_FE_ERR"][idx].astype(float)
+            el_flags[el] = data[f"{code}_FE_FLAG"][idx].astype(int)
+
+    entries = []
+    for k in range(len(idx)):
+        abund = {}
+        for el in elements:
+            v = float(el_vals[el][k])
+            fl = int(el_flags[el][k])
+            e = float(el_errs[el][k])
+            reliable = (fl == 1) and (v != -999.0) and np.isfinite(v)
+            if reliable:
+                abund[el] = {
+                    "logeps": v, "XFe": v, "sigma_Total": e,
+                    "reliable": True,
+                }
+            else:
+                abund[el] = {
+                    "logeps": None, "XFe": None, "sigma_Total": None,
+                    "reliable": False,
+                }
+
+        entries.append({
+            "label": starid[k].strip(),
+            "params": {
+                "RAdeg": float(ra[k]),
+                "DEdeg": float(dec[k]),
+                "Teff": float(teff[k]),
+                "e_Teff": float(teff_err[k]),
+                "logg": float(logg[k]),
+                "e_logg": float(logg_err[k]),
+                "FeH": float(feh[k]),
+                "e_FeH": float(feh_err[k]),
+                "SNR": float(snr[k]),
+            },
+            "abundances": abund,
+        })
+
+    return entries

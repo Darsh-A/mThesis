@@ -1,0 +1,69 @@
+{
+  "n_mocks": 50000,
+  "positive_fraction": 0.33682,
+  "feature_names": [
+    "Al/Fe",
+    "Ar/Fe",
+    "C/Fe",
+    "Ca/Fe",
+    "Cl/Fe",
+    "Co/Fe",
+    "Cr/Fe",
+    "Cu/Fe",
+    "F/Fe",
+    "Ga/Fe",
+    "Ge/Fe",
+    "K/Fe",
+    "Mg/Fe",
+    "Mn/Fe",
+    "N/Fe",
+    "Na/Fe",
+    "Ne/Fe",
+    "Ni/Fe",
+    "O/Fe",
+    "P/Fe",
+    "S/Fe",
+    "Sc/Fe",
+    "Si/Fe",
+    "Ti/Fe",
+    "V/Fe",
+    "Zn/Fe"
+  ],
+  "figures": [
+    "fig1_priors.png",
+    "fig2_timeline.png",
+    "fig3_metallicity.png",
+    "fig4_yields.png",
+    "fig5_trends.png",
+    "fig6_ratios.png",
+    "fig7_label.png",
+    "fig8_zstar.png",
+    "fig9_ca_pisn_fraction.png"
+  ],
+  "source_share_median": {
+    "PISN": 0.13839955973405654,
+    "Pop III": 0.4430899772074488,
+    "Pop II": 0.0679046143268664
+  },
+  "ratio_spearman": {
+    "Na/Mg": -0.47213252821283275,
+    "Co/Ni": -0.466677831412068,
+    "Mn/Cr": 0.2930685412983201,
+    "Zn/Mg": -0.6683326662755562
+  },
+  "popii_table": "Limongi18",
+  "popii_grid_floor": 3.236e-05,
+  "popii_source_nodes": [
+    3.236e-05,
+    0.0003236,
+    0.003236,
+    0.01345
+  ],
+  "z_star_below_grid_floor_fraction": 0.0,
+  "popii_lowest_nonzero_node": 3.236e-05,
+  "z_star_below_lowest_nonzero_fraction": 0.0,
+  "z_star_in_source_range_fraction": 1.0,
+  "z_star_p16": 4.868907853960991e-05,
+  "z_star_p50": 0.00011856933997478336,
+  "z_star_p84": 0.0003868796629831195
+}

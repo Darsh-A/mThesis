@@ -1,0 +1,33 @@
+  all 11 sigma=0.2
+  all 11 sigma=0.3
+  no Zn sigma=0.2
+  no Zn sigma=0.3
+  no Co sigma=0.2
+  no Co sigma=0.3
+  no Zn, Co sigma=0.2
+  no Zn, Co sigma=0.3
+  no Zn, Co, Mn sigma=0.2
+  no Zn, Co, Mn sigma=0.3
+  PFS-like sigma=0.2
+  PFS-like sigma=0.3
+  alpha only sigma=0.2
+  alpha only sigma=0.3
+  alpha + Na sigma=0.2
+  alpha + Na sigma=0.3
+  alpha + Na, Cr, Ni sigma=0.2
+  alpha + Na, Cr, Ni sigma=0.3
+  core + Co sigma=0.2
+  core + Co sigma=0.3
+  core + Zn sigma=0.2
+  core + Zn sigma=0.3
+all 11                   n=11 within=0.968 LOTO=nan
+no Zn                    n=10 within=0.952 LOTO=nan
+no Co                    n=10 within=0.967 LOTO=nan
+no Zn, Co                n= 9 within=0.948 LOTO=nan
+no Zn, Co, Mn            n= 8 within=0.946 LOTO=nan
+PFS-like                 n= 9 within=0.948 LOTO=nan
+alpha only               n= 4 within=0.863 LOTO=nan
+alpha + Na               n= 5 within=0.929 LOTO=nan
+alpha + Na, Cr, Ni       n= 7 within=0.941 LOTO=nan
+core + Co                n= 8 within=0.946 LOTO=nan
+core + Zn                n= 8 within=0.966 LOTO=nan

@@ -1,0 +1,425 @@
+import csv
+import re
+
+import numpy as np
+from scipy.stats import loguniform
+
+from params import Z_SUN, limongi18_lifetime
+
+LIMONGI_Z_SOLAR = 0.01345
+LIMONGI_Z_ALPHA = 0.03236
+LIMONGI_FEH_MIN = -3.0
+
+def _get_element(data: dict, isotope: str) -> float:
+    """Get the element mass value from data
+
+    Args:
+        data: A dictionary containing yield data.
+        isotope: The isotope name (e.g., "C12", "He4").
+    NOTE: This is meant to use after yield summation, so it will return the mass of the element, not the isotope.
+    it may return wrong mass if summation is not done!!!
+
+    Returns:
+        The mass of the element
+    """
+    # Normalize isotope name to element symbol
+    element = _isotope_to_element(isotope)
+
+    # Check if the element is in the data
+    if element in data["yields"]:
+        return data["yields"][element]
+
+    raise ValueError(f"Element {element} not found in data.")
+
+def _isotope_label(raw: str) -> str:
+    """Normalize an isotope name like 'h1' or 'he4' to 'H1', 'He4'."""
+    name = raw.strip().lower()
+    m = re.match(r'([a-z]+)(\d+)', name)
+    if not m:
+        return raw
+    return m.group(1).capitalize() + m.group(2)
+
+
+def _isotope_to_element(name:str) -> str:
+    """Extract element symbol from an isotope name.
+
+    "c12"      -> "C"
+    "$^{12}$C" -> "C"   (LaTeX)
+    "$^{}$p"   -> "H"   (proton)
+    "$^{}$d"   -> "H"   (deuteron)
+    """
+    name = name.strip()
+    name = name.replace('$', '').replace('{', '').replace('}', '').replace('^', '')
+    # Detect bare proton/deuteron ('$^{}$p' / '$^{}$d') BEFORE lowercasing,
+    # so the element symbols 'P'/'D' and isotopes like 'P31' (phosphorus)
+    # are not mistaken for the proton/deuteron shorthand.
+    if name in ('p', 'd'):
+        return 'H'
+    name = name.lstrip('0123456789').lower()
+    m = re.match(r'([a-z]+)', name)
+    if not m:
+        return name
+    return m.group(1).capitalize()
+
+
+def _ion_to_element(ion: str) -> str:
+    """Element symbol from an ion label (e.g. 'FeII' -> 'Fe', 'C' -> 'C').
+
+    Ion labels carry the ionization stage as a Roman-numeral suffix (or none
+    for neutral atoms reported bare, e.g. 'C').  The leading chemical symbol
+    is one uppercase letter plus at most one lowercase letter, so matching
+    ``[A-Z][a-z]?`` grabs the element without confusing trailing I/V/X
+    numerals with the symbol.  Unlike ``_isotope_to_element``, which lowercases
+    first and is meant for isotope labels like 'c12'/'Fe56', this operates on
+    the original capitalization to avoid folding 'II' into 'FeII' -> 'Feii'.
+    """
+    m = re.match(r"[A-Z][a-z]?", (ion or "").strip())
+    return m.group(0) if m else (ion or "").strip()
+
+
+def _combine_elements(yields: dict[str, float]) -> dict[str, float]:
+    """Combine isotopes into elements, summing their yields.
+
+    For example, if yields contains "C12" and "C13", the result will contain
+    a single entry for "C" with the sum of the two yields.
+    """
+    combined = {}
+    for iso, val in yields.items():
+        elem = _isotope_to_element(iso)
+        combined[elem] = combined.get(elem, 0.0) + val
+    return combined
+
+
+# Each entry: isotope -> (final stable daughter element, half-life in years)
+# Chains (52Fe->52Mn->52Cr, 60Zn->60Cu->60Ni) are collapsed straight to
+# their final stable daughter, since every intermediate half-life is
+# well under a year -- the compound decay is complete on any timescale
+# you'd realistically use here, so there's no need to model the
+# intermediate step separately.
+_WW95_RADIOACTIVE_HALFLIVES: dict[str, tuple[str, float]] = {
+    # Fe-group, sub-year half-lives
+    "Ni56": ("Fe", 6.075 / 365.25),
+    "Co56": ("Fe", 77.233 / 365.25),
+    "Ni57": ("Fe", 35.6 / 24 / 365.25),
+    "Co57": ("Fe", 271.74 / 365.25),
+    "Co55": ("Mn", 17.53 / 24 / 365.25),
+    "Fe55": ("Mn", 2.744),
+    # newly added fast chains
+    "Ti44": ("Ca", 58.9),
+    "Cr48": ("Ti", 21.56 / 24 / 365.25),
+    "Fe52": ("Cr", 8.275 / 24 / 365.25),        # via 52Mn, both hops < 1 week
+    "Zn60": ("Ni", 2.38 / (60 * 24 * 365.25)),  # via 60Cu, both hops < 1 hr
+    "Na22": ("Ne", 2.6018),
+    # long-lived: timescale-dependent, worth checking against your model's
+    # assumed mixing/enrichment delay rather than assuming full decay
+    "Al26": ("Mg", 7.17e5),
+    "Fe60": ("Ni", 2.6e6),
+}
+
+def _apply_radioactive_decay(
+    yields: dict[str, float],
+    timescale_yr: float = 1e6,
+    decay_map: dict[str, tuple[str, float]] = _WW95_RADIOACTIVE_HALFLIVES
+) -> dict[str, float]:
+    """Route radioactive isotopes to their stable decay product.
+
+    Must be called on RAW isotope-level yields, before _combine_elements.
+
+    Parameters
+    ----------
+    yields : dict[str, float]
+        Raw isotope-keyed yields (solar masses).
+    timescale_yr : float
+        Time assumed to elapse between ejection and the point you're
+        evaluating abundances (e.g. time until this gas is incorporated
+        into the next generation of stars). Governs how much of a
+        long-lived isotope (26Al, 60Fe) has actually decayed by then.
+        Default of 1 Myr is a fairly standard assumption for minihalo/ISM
+        mixing timescales -- short-lived isotopes (Ni56, Ti44, etc.) are
+        effectively 100% decayed at this timescale regardless, so this
+        parameter only meaningfully changes 26Al/60Fe routing. Set it
+        explicitly and document the choice; don't rely on the default
+        without checking it matches your enrichment model's assumption.
+
+    Isotopes not in _RADIOACTIVE_HALFLIVES pass through unchanged, under
+    their own isotope label. _combine_elements still needs to be called
+    afterward to fold everything (decayed + any undecayed remainder)
+    into per-element totals.
+    """
+    result: dict[str, float] = {}
+    for iso, val in yields.items():
+        label = _isotope_label(iso)
+        entry = decay_map.get(label)
+        if entry is None:
+            result[iso] = result.get(iso, 0.0) + val
+            continue
+
+        target_elem, half_life_yr = entry
+        decayed_frac = 1.0 - 0.5 ** (timescale_yr / half_life_yr)
+        decayed_frac = min(max(decayed_frac, 0.0), 1.0)  # numerical safety
+
+        decayed_val = val * decayed_frac
+        remaining_val = val - decayed_val
+
+        result[target_elem] = result.get(target_elem, 0.0) + decayed_val
+        if remaining_val > 0.0:
+            # keep any undecayed remainder under its own isotope label,
+            # rather than silently dropping it
+            result[iso] = result.get(iso, 0.0) + remaining_val
+
+    return result
+
+
+def extract_yield_peaks(pisn_yields, sn_yields, elem, f_pisn=0.9,f_ratio=1e-4, n_samples=500):
+    """Extract local density maxima of [elem/Fe] vs [Fe/H] and return, per peak,
+    the PISN/SN parameters plus the abundance ratios needed by plot_one_yield."""
+    from scipy.ndimage import maximum_filter
+    from scipy.stats import gaussian_kde, loguniform
+    from params import filter_elements
+    from .salvadori_funcs import salvadori_combined_abundratio, salvadori_combined_abundratio_WrtH
+
+    X_Fe, Fe_H, pisn_entries, sn_entries = [], [], [], []
+
+    for _ in range(n_samples):
+        pisn_entry = pisn_yields[np.random.randint(len(pisn_yields))]
+        sn_entry = sn_yields[np.random.randint(len(sn_yields))]
+
+        ratio = salvadori_combined_abundratio(elem, elem, "Fe", "Fe", pisn_entry, sn_entry, f_pisn=f_pisn)
+        ratio_h = salvadori_combined_abundratio_WrtH("Fe", "Fe", pisn_entry, sn_entry, f_pisn=f_pisn, f_ratio=f_ratio)
+
+        # if ratio < -3 or ratio_h < -3:
+        #     continue
+
+        X_Fe.append(ratio)
+        Fe_H.append(ratio_h)
+        pisn_entries.append(pisn_entry)
+        sn_entries.append(sn_entry)
+
+    if not X_Fe:
+        return []
+
+    X_Fe = np.array(X_Fe)
+    Fe_H = np.array(Fe_H)
+
+    kde = gaussian_kde(np.vstack([Fe_H, X_Fe]))
+    Xg, Yg = np.mgrid[Fe_H.min():Fe_H.max():200j, X_Fe.min():X_Fe.max():200j]
+    Z = np.reshape(kde(np.vstack([Xg.ravel(), Yg.ravel()])).T, Xg.shape)
+
+    maxima = Z == maximum_filter(Z, size=3)
+    maxima &= Z > 0.05 * Z.max()
+
+    scale = np.array([Fe_H.std(), X_Fe.std()])
+    scale[scale == 0] = 1.0
+
+    idxs = []
+    for ix, iy in np.argwhere(maxima):
+        d = np.sqrt(((Fe_H - Xg[ix, iy]) / scale[0]) ** 2 + ((X_Fe - Yg[ix, iy]) / scale[1]) ** 2)
+        idxs.append(int(np.argmin(d)))
+    idxs = list(dict.fromkeys(idxs))
+
+    centers = np.array([[Fe_H[i], X_Fe[i]] for i in idxs])
+    assign = np.argmin(np.sqrt(((Fe_H[:, None] - centers[:, 0]) / scale[0]) ** 2
+                               + ((X_Fe[:, None] - centers[:, 1]) / scale[1]) ** 2), axis=1)
+    idxs = [idxs[k] for k in np.argsort(-np.bincount(assign, minlength=len(idxs)))]
+
+    peaks = []
+    for i in idxs:
+        pisn_entry, sn_entry = pisn_entries[i], sn_entries[i]
+        peaks.append({
+            "pisn": {"mass": pisn_entry["params"]["mass"]},
+            "sn": {
+                "mass": sn_entry["params"]["mass"],
+                "lfej": sn_entry["params"]["lfej"],
+                "energy": sn_entry["params"]["energy"],
+                "elem_value": sn_entry["yields"].get(elem, 0.0),
+                "Fe_value": sn_entry["yields"].get("Fe", 0.0),
+            },
+            "ratios": {
+                e: salvadori_combined_abundratio(e, e, "Fe", "Fe", pisn_entry, sn_entry, f_pisn=f_pisn)
+                for e in filter_elements
+            },
+        })
+    return peaks
+
+
+_LIMONGI_LIFETIME_CACHE: dict[tuple[int, int], list[dict]] = {}
+
+
+def _limongi_lifetime_rows(velocity: int, feh: int) -> list[dict]:
+    key = (int(velocity), int(feh))
+    rows = _LIMONGI_LIFETIME_CACHE.get(key)
+    if rows is None:
+        rows = []
+        with open(limongi18_lifetime, newline="") as f:
+            for row in csv.DictReader(f):
+                if int(row["velocity"]) == int(velocity) and int(row["feh"]) == int(feh):
+                    rows.append(row)
+        _LIMONGI_LIFETIME_CACHE[key] = rows
+    return rows
+
+
+def limongi_lifetime(velc: int, feh: int, phase: str, initial_mass: int) -> dict[str, float]:
+    """Look up the Limongi & Chieffi (2018) lifetime and total mass for a model.
+
+    Args:
+        velc: Rotational velocity in km/s (0, 150, or 300).
+        feh: Metallicity [Fe/H] (0, -1, -2, or -3).
+        phase: Evolutionary phase (MS, H, He, C, Ne, O, Si, or PSN).
+        initial_mass: Initial stellar mass in Msun
+            (13, 15, 20, 25, 30, 40, 60, 80, or 120).
+
+    Returns:
+        dict with keys lifetime_yr (cumulative age in years at the requested
+        phase) and total_mass (total mass in Msun, a snapshot value at that
+        phase -- not summed).
+    """
+    PHASE_ORDER = ["MS", "H", "HE", "C", "NE", "O", "SI", "PSN"]
+
+    phase = phase.upper()
+    initial_mass = int(initial_mass)
+
+    if phase not in PHASE_ORDER:
+        raise ValueError(f"Unrecognized phase: {phase!r}")
+
+    target_idx = PHASE_ORDER.index(phase)
+
+    rows_by_phase: dict[str, dict] = {}
+    for row in _limongi_lifetime_rows(velc, feh):
+        if int(row["initial_mass"]) == initial_mass:
+            rows_by_phase[row["phase"].upper()] = row
+
+    if not rows_by_phase:
+        raise ValueError(
+            f"No Limongi18 lifetime entry for velc={velc}, feh={feh}, "
+            f"initial_mass={initial_mass} at all."
+        )
+
+    cumulative_yr = 0.0
+    reached_phase = None
+    for p in PHASE_ORDER[: target_idx + 1]:
+        row = rows_by_phase.get(p)
+        if row is None:
+            break
+        cumulative_yr += float(row["lifetime_yr"])
+        reached_phase = p
+
+    if reached_phase is None:
+        raise ValueError(
+            f"Model velc={velc}, feh={feh}, initial_mass={initial_mass} "
+            f"has no recorded duration even for phase=MS."
+        )
+
+    return {
+        "lifetime_yr": cumulative_yr,
+        "total_mass": float(rows_by_phase[reached_phase]["total_mass"]),
+        "reached_phase": reached_phase,
+        "is_ppisn_truncated": reached_phase != phase,
+    }
+
+def limongi_feh_from_z(z_abs: float) -> float:
+    """Map an absolute metallicity to Limongi18's [Fe/H].
+
+    Limongi18's low-Z models are alpha-enhanced, so Z does not scale as
+    Z_sun * 10^[Fe/H]: the published values are Z = 3.236e-2 * 10^[Fe/H]
+    for [Fe/H] <= -1, and Z = 1.345e-2 at [Fe/H] = 0. The two branches are
+    joined linearly in log Z between Z = 3.236e-3 and Z = 1.345e-2.
+    """
+    z = max(float(z_abs), 1.0e-30)
+    if z <= 3.236e-3:
+        return float(np.clip(np.log10(z / LIMONGI_Z_ALPHA), LIMONGI_FEH_MIN, -1.0))
+    if z >= LIMONGI_Z_SOLAR:
+        return 0.0
+    span = np.log10(LIMONGI_Z_SOLAR) - np.log10(3.236e-3)
+    return float((np.log10(z) - np.log10(3.236e-3)) / span - 1.0)
+
+
+def limongi_feh_continuous(Z_rel: float) -> float:
+    """Continuous [Fe/H] for Limongi18 from Z relative to solar."""
+    return limongi_feh_from_z(Z_rel * Z_SUN)
+
+
+def salvadori_select_limongi_feh(Z_rel: float) -> int:
+    """Snap to the nearest tabulated Limongi18 [Fe/H] point (0, -1, -2, -3)."""
+    feh_grid = (0, -1, -2, -3)
+    target = limongi_feh_continuous(Z_rel)
+    return min(feh_grid, key=lambda feh: abs(target - feh))
+
+from scipy.interpolate import interp1d
+
+def build_pisn_interpolator(salvadori_pisn_yields, log_range_threshold=1.0):
+    """Continuous-mass PISN yield interpolator over the HW2002 grid.
+
+    Per-element scheme:
+      * log-linear (geometric) if the element's mass-normalized yield is
+        strictly positive everywhere AND spans more than `log_range_threshold`
+        dex across the grid. This handles threshold/steep elements (Zn, Cu, ...)
+        whose yields jump orders of magnitude at the PISN onset, without the
+        negative-overshoot/NaN failures of higher-order splines.
+      * linear otherwise (smooth, low-dynamic-range elements; also anything
+        with zero/negative entries, which cannot be logged).
+    """
+    masses = np.array([e["params"]["mass"] for e in salvadori_pisn_yields], float)
+    combined = [_combine_elements(e["yields"]) for e in salvadori_pisn_yields]
+    all_elements = sorted(set().union(*(set(c) for c in combined)))
+
+    interps = {}
+    schemes = {}
+    for el in all_elements:
+        vals = np.array([c.get(el, 0.0) for c in combined], float)
+        pos = vals > 0
+        log_range = np.log10(vals.max() / vals.min()) if pos.all() and vals.min() > 0 else 0.0
+        use_log = pos.all() and log_range > log_range_threshold
+        if use_log:
+            interps[el] = interp1d(
+                masses, np.log10(vals), kind="linear",
+                bounds_error=False, fill_value=(np.log10(vals[0]), np.log10(vals[-1])),
+            )
+            schemes[el] = "log"
+        else:
+            interps[el] = interp1d(
+                masses, vals, kind="linear",
+                bounds_error=False, fill_value=(vals[0], vals[-1]),
+            )
+            schemes[el] = "linear"
+
+    def interp(mass):
+        return {
+            "label": f"M={mass:.1f}",
+            "params": {"mass": float(mass)},
+            "yields": {
+                el: float(10 ** interps[el](mass) if schemes[el] == "log" else interps[el](mass))
+                for el in all_elements
+            },
+        }
+
+    interp.schemes = schemes  # for inspection, optional
+    return interp
+
+def limongi_mass_from_lifetime(lifetime_yr: float, feh: int, velocity: int = 0) -> float | None:
+    """Invert Limongi18's own tabulated (cumulative) PSN lifetimes to get
+    the turnoff mass at a given age, analogous to raiteri_mass_from_lifetime
+    but self-consistent with the LC18 grid specifically (including its
+    rotation dependence, which Raiteri's fit has no concept of).
+
+    Only defined within LC18's tabulated mass range (13-120 Msun) and at
+    its four feh grid points -- unlike Raiteri's smooth analytic fit, this
+    requires snapping to the nearest tabulated feh (see
+    salvadori_select_limongi_feh) and interpolating between only 9 mass
+    points, so it's necessarily coarser in mass resolution.
+    """
+    masses = [13, 15, 20, 25, 30, 40, 60, 80, 120]
+    lifetimes = [
+        limongi_lifetime(velocity, feh, "PSN", m)["lifetime_yr"]
+        for m in masses
+    ]
+    # Lifetime decreases monotonically with mass -- invert by interpolating
+    # mass as a function of lifetime (need increasing x for interp1d, so
+    # reverse both arrays since lifetimes are decreasing in mass order).
+    from scipy.interpolate import interp1d
+    mass_from_lifetime = interp1d(
+        lifetimes[::-1], masses[::-1],
+        kind="linear", bounds_error=False, fill_value=(masses[-1], masses[0]),
+    )
+    if lifetime_yr < min(lifetimes) or lifetime_yr > max(lifetimes):
+        return None  # outside tabulated range -- mirror raiteri's None-on-OOB behavior
+    return float(mass_from_lifetime(lifetime_yr))

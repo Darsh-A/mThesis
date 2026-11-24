@@ -1,0 +1,10 @@
+v20/Limongi18_clamp      raw=0.083 no_ti=0.847 offsets=0.925 no_ti_offsets=0.875
+v20/WW95_native          raw=0.192 no_ti=0.683 offsets=0.948 no_ti_offsets=0.891
+v20/Nomoto13_blend       raw=0.065 no_ti=0.397 offsets=0.927 no_ti_offsets=0.865
+v20/Nomoto13_clamp       raw=0.086 no_ti=0.506 offsets=0.927 no_ti_offsets=0.868
+v20/CK20_blend           raw=0.335 no_ti=0.449 offsets=0.922 no_ti_offsets=0.868
+v20/CK20_clamp           raw=0.340 no_ti=0.561 offsets=0.909 no_ti_offsets=0.862
+v19/Limongi18            raw=0.096 no_ti=0.847 offsets=0.943 no_ti_offsets=0.896
+v19/Nomoto13             raw=0.083 no_ti=0.545 offsets=0.940 no_ti_offsets=0.909
+v19/Nomoto13_CK20        raw=0.187 no_ti=0.538 offsets=0.940 no_ti_offsets=0.896
+v19/WW95                 raw=0.138 no_ti=0.647 offsets=0.938 no_ti_offsets=0.883

@@ -1,0 +1,20 @@
+# env
+.venv
+__pycache__/
+*.pyc
+.pytest_cache/
+.opencode
+.commandcode
+.agents
+
+# large raw yield grids (must exist locally, see README)
+data/raw/Ishigaki18/
+data/raw/allStarLite-dr17-synspec_rev1.fits
+
+# generated yield caches (rebuilt on demand)
+data/potluck/cache/
+
+# heavy binary artifacts from experiment runs (datasets, arrays, figures);
+# the JSON/CSV/MD records next to them are tracked
+*.npz
+*.png

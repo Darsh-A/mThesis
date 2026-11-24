@@ -1,0 +1,56 @@
+Model performance comparison — potluck backends
+================================================
+
+Dataset : src/potluck/tests/v5/limongi18_50k_all_elements.npz
+Mocks   : 50,000 accepted
+Blocks  : noiseless (26 ratios) and observed (11 Li+ ratios)
+Protocol: identical 5-fold stratified CV, Li+ importance weights, median
+          imputation for every backend. Classifier target y_f_05 (f_Z >= 0.5);
+          regressor target f_Z. "+-x" is the standard error over the 5 folds.
+          Metrics: weighted out-of-fold AUC, weighted Brier, weighted R^2 and MAE.
+
+Configurations
+--------------
+rf  : RandomForest, 300 trees (60 below 5000 rows), min_samples_leaf=5, max_features=sqrt
+gb  : HistGradientBoosting, 150 iterations, depth 3, learning rate 0.05 (the v15 model)
+xgb : XGBoost (xgboost-cpu 3.4.1), 300 trees, depth 3, learning rate 0.05,
+      subsample=0.8, colsample_bytree=0.8, reg_lambda=1.0, tree_method=hist
+
+Noiseless mock ratios (26 features)
+-----------------------------------
+model   AUC              Brier            f_Z R2           f_Z MAE
+rf      0.9984 +-0.0001  0.0136 +-0.0004  0.9790 +-0.0006  0.0249 +-0.0001
+gb      0.9976 +-0.0002  0.0156 +-0.0005  0.9667 +-0.0006  0.0378 +-0.0002
+xgb     0.9987 +-0.0001  0.0114 +-0.0004  0.9762 +-0.0006  0.0312 +-0.0002
+
+Observed ratios with noise (11 features)
+----------------------------------------
+model   AUC              Brier            f_Z R2           f_Z MAE
+rf      0.9739 +-0.0005  0.0505 +-0.0004  0.8042 +-0.0024  0.0982 +-0.0006
+gb      0.9716 +-0.0007  0.0532 +-0.0006  0.7742 +-0.0044  0.1064 +-0.0010
+xgb     0.9742 +-0.0006  0.0505 +-0.0005  0.7884 +-0.0036  0.1021 +-0.0008
+
+Importance rank agreement (Spearman rho over out-of-fold permutation importance)
+-------------------------------------------------------------------------------
+noiseless:  rf vs gb 0.672 | rf vs xgb 0.647 | gb vs xgb 0.934
+observed :  rf vs gb 0.973 | rf vs xgb 0.982 | gb vs xgb 0.991
+
+Reading
+-------
+1. Gradient boosting is the worst of the three on all eight metrics. The gaps
+   are many fold-SEs wide, so this is not fold noise. The v15 selection-curve
+   scorer is the weakest backend of the three tested.
+2. The random forest is the best regressor on both blocks (best f_Z R2 and MAE,
+   ~4-6 SE clear of the others).
+3. XGBoost is the best classifier (best AUC/Brier on both blocks); on the
+   observed block it is statistically tied with the random forest.
+4. On the noiseless 26-feature block the model choice changes the feature
+   ranking: the random forest disagrees with both boosters (rho ~0.65), while
+   the boosters agree with each other (rho ~0.93). On the observed 11-feature
+   block all three agree (rho >= 0.97).
+5. Caveat: each backend ran at its current configuration, not after tuning;
+   gb used its production v15 setting. This is a like-for-like protocol, not a
+   tuned-vs-tuned bake-off.
+
+Raw JSON and figures: src/potluck/tests/v15/model_comparison/
+(comparison.json, metrics.png, importance_noiseless.png, importance_observed.png)

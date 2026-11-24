@@ -1,0 +1,19 @@
+         policy   scheme   median      max  ge_0.25  ge_0.5     mean
+Limongi18_clamp baseline 0.000000 0.418747       10       0 0.012306
+Limongi18_clamp  gt01_x2 0.000000 0.462223       26       0 0.022191
+Limongi18_clamp  gt01_x5 0.019395 0.481683       76       0 0.035564
+Limongi18_clamp  gt05_x5 0.000000 0.547790       37       2 0.013329
+Limongi18_clamp gt05_x10 0.000000 0.545747       58       1 0.017640
+Limongi18_clamp     both 0.000000 0.482915       63       0 0.019828
+ Nomoto13_blend baseline 0.001473 0.290831        2       0 0.014899
+ Nomoto13_blend  gt01_x2 0.008421 0.353839        4       0 0.022925
+ Nomoto13_blend  gt01_x5 0.024932 0.372102       12       0 0.034341
+ Nomoto13_blend  gt05_x5 0.000000 0.319335        8       0 0.009849
+ Nomoto13_blend gt05_x10 0.000000 0.313256       16       0 0.009535
+ Nomoto13_blend     both 0.000000 0.353465       36       0 0.013197
+ Nomoto13_clamp baseline 0.015770 0.413491       14       0 0.027577
+ Nomoto13_clamp  gt01_x2 0.022783 0.448948       23       0 0.035232
+ Nomoto13_clamp  gt01_x5 0.045831 0.467777       58       0 0.055835
+ Nomoto13_clamp  gt05_x5 0.010744 0.448756       51       0 0.033500
+ Nomoto13_clamp gt05_x10 0.000000 0.427761       67       0 0.024483
+ Nomoto13_clamp     both 0.000000 0.436799       59       0 0.022203

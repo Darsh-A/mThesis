@@ -1,0 +1,9 @@
+{
+  "rf_auc_mean": 0.9607820802312975,
+  "logit_auc_mean": 0.9639763603738711,
+  "rf_tpr_mean": 0.37505218350687236,
+  "logit_tpr_mean": 0.3769467801349515,
+  "rf_auc_better": 17,
+  "rf_tpr_better": 15,
+  "n_pairs": 30
+}

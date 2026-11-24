@@ -1,0 +1,724 @@
+{
+  "datasets": {
+    "v20/Limongi18_clamp": {
+      "path": "src/potluck/tests/v20/application/Limongi18_clamp/dataset.npz",
+      "n_mocks": 10000,
+      "offsets": {
+        "Na": {
+          "offset": 0.5897994995117187,
+          "p16": 0.5697994995117187,
+          "p84": 0.5997994995117187,
+          "real_median": -0.15,
+          "mock_median": -0.7397994995117188,
+          "n_real": 364,
+          "trend_rho": -0.03876701187745043
+        },
+        "Mg": {
+          "offset": 0.23330413818359375,
+          "p16": 0.22330413818359374,
+          "p84": 0.24330413818359375,
+          "real_median": 0.37,
+          "mock_median": 0.13669586181640625,
+          "n_real": 385,
+          "trend_rho": -0.20850724851903676
+        },
+        "Ca": {
+          "offset": 0.0716055202484131,
+          "p16": 0.0716055202484131,
+          "p84": 0.08160552024841311,
+          "real_median": 0.33,
+          "mock_median": 0.2583944797515869,
+          "n_real": 384,
+          "trend_rho": -0.004360579634828246
+        },
+        "Ti": {
+          "offset": 0.7337924909591675,
+          "p16": 0.7287924909591674,
+          "p84": 0.7387924909591674,
+          "real_median": 0.445,
+          "mock_median": -0.2887924909591675,
+          "n_real": 380,
+          "trend_rho": 0.06449952775768629
+        },
+        "Cr": {
+          "offset": -0.195281457901001,
+          "p16": -0.20528145790100097,
+          "p84": -0.18528145790100098,
+          "real_median": -0.2,
+          "mock_median": -0.0047185420989990234,
+          "n_real": 369,
+          "trend_rho": 0.45601217430414753
+        },
+        "Ni": {
+          "offset": 0.15159751415252687,
+          "p16": 0.14659751415252686,
+          "p84": 0.15659751415252685,
+          "real_median": 0.015,
+          "mock_median": -0.13659751415252686,
+          "n_real": 288,
+          "trend_rho": -0.03927480408955947
+        }
+      },
+      "variants": {
+        "raw": {
+          "in_model": 32,
+          "out_of_model": 353,
+          "fraction": 0.08311688311688312,
+          "median_distance": 4.947304899169266,
+          "threshold": 3.275905407585371,
+          "n_finite": 379,
+          "min_core": 4,
+          "n_core": 6
+        },
+        "no_ti": {
+          "in_model": 326,
+          "out_of_model": 59,
+          "fraction": 0.8467532467532467,
+          "median_distance": 1.158283437572225,
+          "threshold": 3.0613484367327377,
+          "n_finite": 358,
+          "min_core": 4,
+          "n_core": 5
+        },
+        "offsets": {
+          "in_model": 356,
+          "out_of_model": 29,
+          "fraction": 0.9246753246753247,
+          "median_distance": 0.9710824365836161,
+          "threshold": 3.275905407585371,
+          "n_finite": 379,
+          "min_core": 4,
+          "n_core": 6
+        },
+        "no_ti_offsets": {
+          "in_model": 337,
+          "out_of_model": 48,
+          "fraction": 0.8753246753246753,
+          "median_distance": 0.7341395241326044,
+          "threshold": 3.0613484367327377,
+          "n_finite": 358,
+          "min_core": 4,
+          "n_core": 5
+        }
+      }
+    },
+    "v20/WW95_native": {
+      "path": "src/potluck/tests/v20/application/WW95_native/dataset.npz",
+      "n_mocks": 10000,
+      "offsets": {
+        "Na": {
+          "offset": 0.5925576448440552,
+          "p16": 0.5725576448440551,
+          "p84": 0.6025576448440552,
+          "real_median": -0.15,
+          "mock_median": -0.7425576448440552,
+          "n_real": 364,
+          "trend_rho": -0.03876701187745043
+        },
+        "Mg": {
+          "offset": 0.1373361301422119,
+          "p16": 0.1273361301422119,
+          "p84": 0.14733613014221192,
+          "real_median": 0.37,
+          "mock_median": 0.23266386985778809,
+          "n_real": 385,
+          "trend_rho": -0.20850724851903676
+        },
+        "Ca": {
+          "offset": -0.06535164833068846,
+          "p16": -0.06535164833068846,
+          "p84": -0.05535164833068845,
+          "real_median": 0.33,
+          "mock_median": 0.3953516483306885,
+          "n_real": 384,
+          "trend_rho": -0.004360579634828246
+        },
+        "Ti": {
+          "offset": 0.6154437732696534,
+          "p16": 0.6104437732696533,
+          "p84": 0.6204437732696533,
+          "real_median": 0.445,
+          "mock_median": -0.17044377326965332,
+          "n_real": 380,
+          "trend_rho": 0.06449952775768629
+        },
+        "Cr": {
+          "offset": -0.29641540050506593,
+          "p16": -0.3064154005050659,
+          "p84": -0.2864154005050659,
+          "real_median": -0.2,
+          "mock_median": 0.09641540050506592,
+          "n_real": 369,
+          "trend_rho": 0.45601217430414753
+        },
+        "Ni": {
+          "offset": -0.5193302488327026,
+          "p16": -0.5243302488327026,
+          "p84": -0.5143302488327026,
+          "real_median": 0.015,
+          "mock_median": 0.5343302488327026,
+          "n_real": 288,
+          "trend_rho": -0.03927480408955947
+        }
+      },
+      "variants": {
+        "raw": {
+          "in_model": 74,
+          "out_of_model": 311,
+          "fraction": 0.19220779220779222,
+          "median_distance": 4.787152261455051,
+          "threshold": 3.634557309134187,
+          "n_finite": 379,
+          "min_core": 4,
+          "n_core": 6
+        },
+        "no_ti": {
+          "in_model": 263,
+          "out_of_model": 122,
+          "fraction": 0.6831168831168831,
+          "median_distance": 2.4412587812278566,
+          "threshold": 3.2899195786658084,
+          "n_finite": 358,
+          "min_core": 4,
+          "n_core": 5
+        },
+        "offsets": {
+          "in_model": 365,
+          "out_of_model": 20,
+          "fraction": 0.948051948051948,
+          "median_distance": 1.2292659080777864,
+          "threshold": 3.634557309134187,
+          "n_finite": 379,
+          "min_core": 4,
+          "n_core": 6
+        },
+        "no_ti_offsets": {
+          "in_model": 343,
+          "out_of_model": 42,
+          "fraction": 0.8909090909090909,
+          "median_distance": 0.9759183527646099,
+          "threshold": 3.2899195786658084,
+          "n_finite": 358,
+          "min_core": 4,
+          "n_core": 5
+        }
+      }
+    },
+    "v20/Nomoto13_blend": {
+      "path": "src/potluck/tests/v20/application/Nomoto13_blend/dataset.npz",
+      "n_mocks": 10000,
+      "offsets": {
+        "Na": {
+          "offset": 0.47899637222290037,
+          "p16": 0.45899637222290035,
+          "p84": 0.4889963722229004,
+          "real_median": -0.15,
+          "mock_median": -0.6289963722229004,
+          "n_real": 364,
+          "trend_rho": -0.03876701187745043
+        },
+        "Mg": {
+          "offset": 0.06090509414672851,
+          "p16": 0.0509050941467285,
+          "p84": 0.07090509414672852,
+          "real_median": 0.37,
+          "mock_median": 0.3090949058532715,
+          "n_real": 385,
+          "trend_rho": -0.20850724851903676
+        },
+        "Ca": {
+          "offset": -0.04495088577270506,
+          "p16": -0.04495088577270506,
+          "p84": -0.034950885772705054,
+          "real_median": 0.33,
+          "mock_median": 0.3749508857727051,
+          "n_real": 384,
+          "trend_rho": -0.004360579634828246
+        },
+        "Ti": {
+          "offset": 0.6214860153198243,
+          "p16": 0.6164860153198242,
+          "p84": 0.6264860153198242,
+          "real_median": 0.445,
+          "mock_median": -0.17648601531982422,
+          "n_real": 380,
+          "trend_rho": 0.06449952775768629
+        },
+        "Cr": {
+          "offset": -0.40665454864501954,
+          "p16": -0.4166545486450195,
+          "p84": -0.39665454864501953,
+          "real_median": -0.2,
+          "mock_median": 0.20665454864501953,
+          "n_real": 369,
+          "trend_rho": 0.45601217430414753
+        },
+        "Ni": {
+          "offset": 0.34356214046478273,
+          "p16": 0.3385621404647827,
+          "p84": 0.34856214046478273,
+          "real_median": 0.015,
+          "mock_median": -0.3285621404647827,
+          "n_real": 288,
+          "trend_rho": -0.03927480408955947
+        }
+      },
+      "variants": {
+        "raw": {
+          "in_model": 25,
+          "out_of_model": 360,
+          "fraction": 0.06493506493506493,
+          "median_distance": 5.53424218054945,
+          "threshold": 3.3324064489100267,
+          "n_finite": 379,
+          "min_core": 4,
+          "n_core": 6
+        },
+        "no_ti": {
+          "in_model": 153,
+          "out_of_model": 232,
+          "fraction": 0.3974025974025974,
+          "median_distance": 3.116455530583663,
+          "threshold": 2.9214637938728076,
+          "n_finite": 358,
+          "min_core": 4,
+          "n_core": 5
+        },
+        "offsets": {
+          "in_model": 357,
+          "out_of_model": 28,
+          "fraction": 0.9272727272727272,
+          "median_distance": 1.0405920424361912,
+          "threshold": 3.3324064489100267,
+          "n_finite": 379,
+          "min_core": 4,
+          "n_core": 6
+        },
+        "no_ti_offsets": {
+          "in_model": 333,
+          "out_of_model": 52,
+          "fraction": 0.8649350649350649,
+          "median_distance": 0.81888043020488,
+          "threshold": 2.9214637938728076,
+          "n_finite": 358,
+          "min_core": 4,
+          "n_core": 5
+        }
+      }
+    },
+    "v20/Nomoto13_clamp": {
+      "path": "src/potluck/tests/v20/application/Nomoto13_clamp/dataset.npz",
+      "n_mocks": 10000,
+      "offsets": {
+        "Na": {
+          "offset": 0.20324692726135254,
+          "p16": 0.18324692726135253,
+          "p84": 0.21324692726135253,
+          "real_median": -0.15,
+          "mock_median": -0.35324692726135254,
+          "n_real": 364,
+          "trend_rho": -0.03876701187745043
+        },
+        "Mg": {
+          "offset": 0.01517879486083984,
+          "p16": 0.00517879486083983,
+          "p84": 0.025178794860839848,
+          "real_median": 0.37,
+          "mock_median": 0.35482120513916016,
+          "n_real": 385,
+          "trend_rho": -0.20850724851903676
+        },
+        "Ca": {
+          "offset": 0.01497371673583986,
+          "p16": 0.01497371673583986,
+          "p84": 0.024973716735839868,
+          "real_median": 0.33,
+          "mock_median": 0.31502628326416016,
+          "n_real": 384,
+          "trend_rho": -0.004360579634828246
+        },
+        "Ti": {
+          "offset": 0.62104398727417,
+          "p16": 0.6160439872741699,
+          "p84": 0.6260439872741699,
+          "real_median": 0.445,
+          "mock_median": -0.17604398727416992,
+          "n_real": 380,
+          "trend_rho": 0.06449952775768629
+        },
+        "Cr": {
+          "offset": -0.39635820388793946,
+          "p16": -0.4063582038879394,
+          "p84": -0.38635820388793946,
+          "real_median": -0.2,
+          "mock_median": 0.19635820388793945,
+          "n_real": 369,
+          "trend_rho": 0.45601217430414753
+        },
+        "Ni": {
+          "offset": 0.3068062210083008,
+          "p16": 0.3018062210083008,
+          "p84": 0.3118062210083008,
+          "real_median": 0.015,
+          "mock_median": -0.2918062210083008,
+          "n_real": 288,
+          "trend_rho": -0.03927480408955947
+        }
+      },
+      "variants": {
+        "raw": {
+          "in_model": 33,
+          "out_of_model": 352,
+          "fraction": 0.08571428571428572,
+          "median_distance": 5.195156362973768,
+          "threshold": 3.2758309087928548,
+          "n_finite": 379,
+          "min_core": 4,
+          "n_core": 6
+        },
+        "no_ti": {
+          "in_model": 195,
+          "out_of_model": 190,
+          "fraction": 0.5064935064935064,
+          "median_distance": 2.8401444243400915,
+          "threshold": 2.9671156948193906,
+          "n_finite": 358,
+          "min_core": 4,
+          "n_core": 5
+        },
+        "offsets": {
+          "in_model": 357,
+          "out_of_model": 28,
+          "fraction": 0.9272727272727272,
+          "median_distance": 1.1105000450131495,
+          "threshold": 3.2758309087928548,
+          "n_finite": 379,
+          "min_core": 4,
+          "n_core": 6
+        },
+        "no_ti_offsets": {
+          "in_model": 334,
+          "out_of_model": 51,
+          "fraction": 0.8675324675324675,
+          "median_distance": 0.8183689909514261,
+          "threshold": 2.9671156948193906,
+          "n_finite": 358,
+          "min_core": 4,
+          "n_core": 5
+        }
+      }
+    },
+    "v19/Limongi18": {
+      "path": "src/potluck/tests/v19/Limongi18/dataset.npz",
+      "n_mocks": 50000,
+      "offsets": {
+        "Na": {
+          "offset": 0.5820894002914428,
+          "p16": 0.5620894002914428,
+          "p84": 0.5920894002914429,
+          "real_median": -0.15,
+          "mock_median": -0.7320894002914429,
+          "n_real": 364,
+          "trend_rho": -0.03876701187745043
+        },
+        "Mg": {
+          "offset": 0.19329583168029785,
+          "p16": 0.18329583168029784,
+          "p84": 0.20329583168029786,
+          "real_median": 0.37,
+          "mock_median": 0.17670416831970215,
+          "n_real": 385,
+          "trend_rho": -0.20850724851903676
+        },
+        "Ca": {
+          "offset": 0.07194514751434328,
+          "p16": 0.07194514751434328,
+          "p84": 0.08194514751434329,
+          "real_median": 0.33,
+          "mock_median": 0.25805485248565674,
+          "n_real": 384,
+          "trend_rho": -0.004360579634828246
+        },
+        "Ti": {
+          "offset": 0.6817570400238038,
+          "p16": 0.6767570400238037,
+          "p84": 0.6867570400238037,
+          "real_median": 0.445,
+          "mock_median": -0.2367570400238037,
+          "n_real": 380,
+          "trend_rho": 0.06449952775768629
+        },
+        "Cr": {
+          "offset": -0.22498435974121095,
+          "p16": -0.23498435974121093,
+          "p84": -0.21498435974121094,
+          "real_median": -0.2,
+          "mock_median": 0.024984359741210938,
+          "n_real": 369,
+          "trend_rho": 0.45601217430414753
+        },
+        "Ni": {
+          "offset": 0.18101085662841798,
+          "p16": 0.17601085662841798,
+          "p84": 0.18601085662841796,
+          "real_median": 0.015,
+          "mock_median": -0.16601085662841797,
+          "n_real": 288,
+          "trend_rho": -0.03927480408955947
+        }
+      },
+      "variants": {
+        "raw": {
+          "in_model": 37,
+          "out_of_model": 348,
+          "fraction": 0.09610389610389611,
+          "median_distance": 4.751163022466557,
+          "threshold": 3.1623656169073984,
+          "n_finite": 379,
+          "min_core": 4,
+          "n_core": 6
+        },
+        "no_ti": {
+          "in_model": 326,
+          "out_of_model": 59,
+          "fraction": 0.8467532467532467,
+          "median_distance": 0.997779529108934,
+          "threshold": 2.842218882979349,
+          "n_finite": 358,
+          "min_core": 4,
+          "n_core": 5
+        },
+        "offsets": {
+          "in_model": 363,
+          "out_of_model": 22,
+          "fraction": 0.9428571428571428,
+          "median_distance": 0.7698512021289103,
+          "threshold": 3.1623656169073984,
+          "n_finite": 379,
+          "min_core": 4,
+          "n_core": 6
+        },
+        "no_ti_offsets": {
+          "in_model": 345,
+          "out_of_model": 40,
+          "fraction": 0.8961038961038961,
+          "median_distance": 0.5605980982168444,
+          "threshold": 2.842218882979349,
+          "n_finite": 358,
+          "min_core": 4,
+          "n_core": 5
+        }
+      }
+    },
+    "v19/Nomoto13": {
+      "path": "src/potluck/tests/v19/Nomoto13/dataset.npz",
+      "n_mocks": 50000,
+      "offsets": {
+        "Na": {
+          "offset": -0.30856897830963137,
+          "p16": -0.3285689783096314,
+          "p84": -0.29856897830963136,
+          "real_median": -0.15,
+          "mock_median": 0.15856897830963135,
+          "n_real": 364,
+          "trend_rho": -0.03876701187745043
+        },
+        "Mg": {
+          "offset": -0.8705222654342651,
+          "p16": -0.8805222654342652,
+          "p84": -0.8605222654342651,
+          "real_median": 0.37,
+          "mock_median": 1.2405222654342651,
+          "n_real": 385,
+          "trend_rho": -0.20850724851903676
+        },
+        "Ca": {
+          "offset": -0.8244424295425414,
+          "p16": -0.8244424295425414,
+          "p84": -0.8144424295425414,
+          "real_median": 0.33,
+          "mock_median": 1.1544424295425415,
+          "n_real": 384,
+          "trend_rho": -0.004360579634828246
+        },
+        "Ti": {
+          "offset": 0.4147517156600952,
+          "p16": 0.4097517156600952,
+          "p84": 0.4197517156600952,
+          "real_median": 0.445,
+          "mock_median": 0.030248284339904785,
+          "n_real": 380,
+          "trend_rho": 0.06449952775768629
+        },
+        "Cr": {
+          "offset": -0.669083547592163,
+          "p16": -0.679083547592163,
+          "p84": -0.659083547592163,
+          "real_median": -0.2,
+          "mock_median": 0.4690835475921631,
+          "n_real": 369,
+          "trend_rho": 0.45601217430414753
+        },
+        "Ni": {
+          "offset": 0.4426476502418518,
+          "p16": 0.4376476502418518,
+          "p84": 0.4476476502418518,
+          "real_median": 0.015,
+          "mock_median": -0.4276476502418518,
+          "n_real": 288,
+          "trend_rho": -0.03927480408955947
+        }
+      },
+      "variants": {
+        "raw": {
+          "in_model": 32,
+          "out_of_model": 353,
+          "fraction": 0.08311688311688312,
+          "median_distance": 5.265931476870078,
+          "threshold": 3.251870601572175,
+          "n_finite": 379,
+          "min_core": 4,
+          "n_core": 6
+        },
+        "no_ti": {
+          "in_model": 210,
+          "out_of_model": 175,
+          "fraction": 0.5454545454545454,
+          "median_distance": 2.741636306935959,
+          "threshold": 3.012650803468919,
+          "n_finite": 358,
+          "min_core": 4,
+          "n_core": 5
+        },
+        "offsets": {
+          "in_model": 362,
+          "out_of_model": 23,
+          "fraction": 0.9402597402597402,
+          "median_distance": 0.9237533793662989,
+          "threshold": 3.251870601572175,
+          "n_finite": 379,
+          "min_core": 4,
+          "n_core": 6
+        },
+        "no_ti_offsets": {
+          "in_model": 350,
+          "out_of_model": 35,
+          "fraction": 0.9090909090909091,
+          "median_distance": 0.6891935480881116,
+          "threshold": 3.012650803468919,
+          "n_finite": 358,
+          "min_core": 4,
+          "n_core": 5
+        }
+      }
+    },
+    "v19/WW95": {
+      "path": "src/potluck/tests/v19/WW95/dataset.npz",
+      "n_mocks": 50000,
+      "offsets": {
+        "Na": {
+          "offset": 0.4984591960906982,
+          "p16": 0.4784591960906982,
+          "p84": 0.5084591960906982,
+          "real_median": -0.15,
+          "mock_median": -0.6484591960906982,
+          "n_real": 364,
+          "trend_rho": -0.03876701187745043
+        },
+        "Mg": {
+          "offset": 0.08391904354095459,
+          "p16": 0.07391904354095458,
+          "p84": 0.0939190435409546,
+          "real_median": 0.37,
+          "mock_median": 0.2860809564590454,
+          "n_real": 385,
+          "trend_rho": -0.20850724851903676
+        },
+        "Ca": {
+          "offset": -0.10564414978027342,
+          "p16": -0.10564414978027342,
+          "p84": -0.09564414978027341,
+          "real_median": 0.33,
+          "mock_median": 0.43564414978027344,
+          "n_real": 384,
+          "trend_rho": -0.004360579634828246
+        },
+        "Ti": {
+          "offset": 0.604602165222168,
+          "p16": 0.5996021652221679,
+          "p84": 0.6096021652221679,
+          "real_median": 0.445,
+          "mock_median": -0.15960216522216797,
+          "n_real": 380,
+          "trend_rho": 0.06449952775768629
+        },
+        "Cr": {
+          "offset": -0.30932815074920655,
+          "p16": -0.3193281507492065,
+          "p84": -0.29932815074920655,
+          "real_median": -0.2,
+          "mock_median": 0.10932815074920654,
+          "n_real": 369,
+          "trend_rho": 0.45601217430414753
+        },
+        "Ni": {
+          "offset": -0.5753635025024414,
+          "p16": -0.5803635025024414,
+          "p84": -0.5703635025024414,
+          "real_median": 0.015,
+          "mock_median": 0.5903635025024414,
+          "n_real": 288,
+          "trend_rho": -0.03927480408955947
+        }
+      },
+      "variants": {
+        "raw": {
+          "in_model": 53,
+          "out_of_model": 332,
+          "fraction": 0.13766233766233765,
+          "median_distance": 4.6153089467493205,
+          "threshold": 3.135292513679439,
+          "n_finite": 379,
+          "min_core": 4,
+          "n_core": 6
+        },
+        "no_ti": {
+          "in_model": 249,
+          "out_of_model": 136,
+          "fraction": 0.6467532467532467,
+          "median_distance": 2.227090061437594,
+          "threshold": 2.828620177646725,
+          "n_finite": 358,
+          "min_core": 4,
+          "n_core": 5
+        },
+        "offsets": {
+          "in_model": 361,
+          "out_of_model": 24,
+          "fraction": 0.9376623376623376,
+          "median_distance": 0.9969925676873802,
+          "threshold": 3.135292513679439,
+          "n_finite": 379,
+          "min_core": 4,
+          "n_core": 6
+        },
+        "no_ti_offsets": {
+          "in_model": 340,
+          "out_of_model": 45,
+          "fraction": 0.8831168831168831,
+          "median_distance": 0.7785035196307941,
+          "threshold": 2.828620177646725,
+          "n_finite": 358,
+          "min_core": 4,
+          "n_core": 5
+        }
+      }
+    }
+  },
+  "variants": [
+    "raw",
+    "no_ti",
+    "offsets",
+    "no_ti_offsets"
+  ]
+}

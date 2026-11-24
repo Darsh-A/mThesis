@@ -1,0 +1,22 @@
+f05
+  k= 1 add=Zn auc=0.8419 subset=Zn
+  k= 2 add=Si auc=0.9308 subset=Zn+Si
+  k= 3 add=Al auc=0.9573 subset=Zn+Si+Al
+  k= 4 add=S  auc=0.9652 subset=Zn+Si+Al+S
+  k= 5 add=Co auc=0.9702 subset=Zn+Si+Al+S+Co
+  k= 6 add=P  auc=0.9726 subset=Zn+Si+Al+S+Co+P
+  k= 7 add=Ca auc=0.9747 subset=Zn+Si+Al+S+Co+P+Ca
+  k= 8 add=O  auc=0.9759 subset=Zn+Si+Al+S+Co+P+Ca+O
+  k= 9 add=Cr auc=0.9765 subset=Zn+Si+Al+S+Co+P+Ca+O+Cr
+  k=10 add=Na auc=0.9773 subset=Zn+Si+Al+S+Co+P+Ca+O+Cr+Na
+D
+  k= 1 add=Zn auc=0.6603 subset=Zn
+  k= 2 add=Si auc=0.7399 subset=Zn+Si
+  k= 3 add=Al auc=0.7722 subset=Zn+Si+Al
+  k= 4 add=Mn auc=0.7813 subset=Zn+Si+Al+Mn
+  k= 5 add=Cu auc=0.7895 subset=Zn+Si+Al+Mn+Cu
+  k= 6 add=S  auc=0.7947 subset=Zn+Si+Al+Mn+Cu+S
+  k= 7 add=P  auc=0.8012 subset=Zn+Si+Al+Mn+Cu+S+P
+  k= 8 add=N  auc=0.8051 subset=Zn+Si+Al+Mn+Cu+S+P+N
+  k= 9 add=V  auc=0.8075 subset=Zn+Si+Al+Mn+Cu+S+P+N+V
+  k=10 add=C  auc=0.8092 subset=Zn+Si+Al+Mn+Cu+S+P+N+V+C

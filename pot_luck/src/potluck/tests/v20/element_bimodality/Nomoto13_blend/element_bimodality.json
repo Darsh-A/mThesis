@@ -1,0 +1,238 @@
+{
+  "dataset": "src/potluck/tests/v20/Nomoto13_blend/dataset.npz",
+  "label": "y_f_05 = 1[f_ZP >= 0.5]",
+  "noiseless": {
+    "C": {
+      "auc": 0.6700400463478475,
+      "auc_raw": 0.32995995365215247,
+      "direction": "lower in PISN",
+      "median_negative": -0.1667000949382782,
+      "median_positive": -0.503582775592804,
+      "delta_median": -0.33688268065452576,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Na": {
+      "auc": 0.7685519945346637,
+      "auc_raw": 0.2314480054653363,
+      "direction": "lower in PISN",
+      "median_negative": -0.6143573224544525,
+      "median_positive": -1.2690315246582031,
+      "delta_median": -0.6546742022037506,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Mg": {
+      "auc": 0.6482110061665203,
+      "auc_raw": 0.3517889938334797,
+      "direction": "lower in PISN",
+      "median_negative": 0.2742159068584442,
+      "median_positive": 0.006664400454610586,
+      "delta_median": -0.2675515064038336,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Si": {
+      "auc": 0.616267793208026,
+      "auc_raw": 0.616267793208026,
+      "direction": "higher in PISN",
+      "median_negative": 0.5402880311012268,
+      "median_positive": 0.6591342091560364,
+      "delta_median": 0.11884617805480957,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Ca": {
+      "auc": 0.602868149648138,
+      "auc_raw": 0.602868149648138,
+      "direction": "higher in PISN",
+      "median_negative": 0.30852942168712616,
+      "median_positive": 0.4017193019390106,
+      "delta_median": 0.09318988025188446,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Ti": {
+      "auc": 0.6529258629377305,
+      "auc_raw": 0.3470741370622695,
+      "direction": "lower in PISN",
+      "median_negative": -0.17950396984815598,
+      "median_positive": -0.33328983187675476,
+      "delta_median": -0.15378586202859879,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Cr": {
+      "auc": 0.6390967737266895,
+      "auc_raw": 0.6390967737266895,
+      "direction": "higher in PISN",
+      "median_negative": 0.14382722973823547,
+      "median_positive": 0.24197566509246826,
+      "delta_median": 0.09814843535423279,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Mn": {
+      "auc": 0.6279603166492502,
+      "auc_raw": 0.6279603166492502,
+      "direction": "higher in PISN",
+      "median_negative": -0.5156610608100891,
+      "median_positive": -0.4036543071269989,
+      "delta_median": 0.11200675368309021,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Co": {
+      "auc": 0.8743690008748555,
+      "auc_raw": 0.1256309991251445,
+      "direction": "lower in PISN",
+      "median_negative": -0.6558204591274261,
+      "median_positive": -1.0376397371292114,
+      "delta_median": -0.3818192780017853,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Ni": {
+      "auc": 0.664038883221264,
+      "auc_raw": 0.33596111677873597,
+      "direction": "lower in PISN",
+      "median_negative": -0.273476779460907,
+      "median_positive": -0.4140585660934448,
+      "delta_median": -0.14058178663253784,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Zn": {
+      "auc": 0.8934528511710796,
+      "auc_raw": 0.10654714882892033,
+      "direction": "lower in PISN",
+      "median_negative": -0.09377190470695496,
+      "median_positive": -1.2963821291923523,
+      "delta_median": -1.2026102244853973,
+      "n_negative": 16359,
+      "n_positive": 3952
+    },
+    "Cu": {
+      "auc": 0.872125435122389,
+      "auc_raw": 0.1278745648776109,
+      "direction": "lower in PISN",
+      "median_negative": -1.162001132965088,
+      "median_positive": -2.067768096923828,
+      "delta_median": -0.9057669639587402,
+      "n_negative": 16357,
+      "n_positive": 3927
+    }
+  },
+  "observed": {
+    "C": {
+      "auc": 0.6339096293767141,
+      "auc_raw": 0.36609037062328587,
+      "direction": "lower in PISN",
+      "median_negative": -0.12965785712003708,
+      "median_positive": -0.43861478567123413,
+      "delta_median": -0.30895692855119705,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Na": {
+      "auc": 0.7482946077357073,
+      "auc_raw": 0.2517053922642926,
+      "direction": "lower in PISN",
+      "median_negative": -0.592644602060318,
+      "median_positive": -1.2529141902923584,
+      "delta_median": -0.6602695882320404,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Mg": {
+      "auc": 0.6063718838810976,
+      "auc_raw": 0.39362811611890236,
+      "direction": "lower in PISN",
+      "median_negative": 0.30296844244003296,
+      "median_positive": 0.06291293352842331,
+      "delta_median": -0.24005550891160965,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Si": {
+      "auc": 0.606002012285783,
+      "auc_raw": 0.606002012285783,
+      "direction": "higher in PISN",
+      "median_negative": 0.5611290633678436,
+      "median_positive": 0.7151612043380737,
+      "delta_median": 0.1540321409702301,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Ca": {
+      "auc": 0.5913526057520715,
+      "auc_raw": 0.5913526057520715,
+      "direction": "higher in PISN",
+      "median_negative": 0.33260975778102875,
+      "median_positive": 0.45141392946243286,
+      "delta_median": 0.11880417168140411,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Ti": {
+      "auc": 0.5852912926181926,
+      "auc_raw": 0.4147087073818074,
+      "direction": "lower in PISN",
+      "median_negative": -0.19471704959869385,
+      "median_positive": -0.2998175621032715,
+      "delta_median": -0.10510051250457764,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Cr": {
+      "auc": 0.5711221631437144,
+      "auc_raw": 0.5711221631437144,
+      "direction": "higher in PISN",
+      "median_negative": 0.1685408055782318,
+      "median_positive": 0.26326432824134827,
+      "delta_median": 0.09472352266311646,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Mn": {
+      "auc": 0.5857567647713827,
+      "auc_raw": 0.5857567647713827,
+      "direction": "higher in PISN",
+      "median_negative": -0.4965999275445938,
+      "median_positive": -0.37419018149375916,
+      "delta_median": 0.12240974605083466,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Co": {
+      "auc": 0.7834531435430525,
+      "auc_raw": 0.2165468564569475,
+      "direction": "lower in PISN",
+      "median_negative": -0.6482856869697571,
+      "median_positive": -1.0914453268051147,
+      "delta_median": -0.44315963983535767,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Ni": {
+      "auc": 0.6242889805422922,
+      "auc_raw": 0.37571101945770774,
+      "direction": "lower in PISN",
+      "median_negative": -0.3099086135625839,
+      "median_positive": -0.4574196934700012,
+      "delta_median": -0.1475110799074173,
+      "n_negative": 16360,
+      "n_positive": 4139
+    },
+    "Zn": {
+      "auc": 0.8762539496978765,
+      "auc_raw": 0.12374605030212346,
+      "direction": "lower in PISN",
+      "median_negative": -0.12496182695031166,
+      "median_positive": -1.3054829835891724,
+      "delta_median": -1.1805211566388607,
+      "n_negative": 16360,
+      "n_positive": 4139
+    }
+  }
+}

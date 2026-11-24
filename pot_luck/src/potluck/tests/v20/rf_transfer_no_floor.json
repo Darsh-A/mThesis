@@ -1,0 +1,720 @@
+{
+  "policies": [
+    "Limongi18_clamp",
+    "WW95_native",
+    "Nomoto13_blend",
+    "Nomoto13_clamp",
+    "Nomoto13_CK20_blend",
+    "Nomoto13_CK20_clamp"
+  ],
+  "blocks": {
+    "noiseless": {
+      "within": {
+        "Limongi18_clamp": {
+          "auc": 0.996123580392811,
+          "brier": 0.025294796490749352,
+          "ci": {
+            "low": 0.9955835591764172,
+            "high": 0.9968195573228139
+          },
+          "n": 9823
+        },
+        "WW95_native": {
+          "auc": 0.9960656165275061,
+          "brier": 0.0257589814799644,
+          "ci": {
+            "low": 0.9955704363386507,
+            "high": 0.9964938539362306
+          },
+          "n": 19564
+        },
+        "Nomoto13_blend": {
+          "auc": 0.9771086458883603,
+          "brier": 0.07292678696199534,
+          "ci": {
+            "low": 0.962104675875923,
+            "high": 0.9897119385010009
+          },
+          "n": 667
+        },
+        "Nomoto13_clamp": {
+          "auc": 0.9776809297411514,
+          "brier": 0.07232862853426471,
+          "ci": {
+            "low": 0.9629513832377274,
+            "high": 0.9896019847972972
+          },
+          "n": 667
+        },
+        "Nomoto13_CK20_blend": {
+          "auc": 0.9896912780656304,
+          "brier": 0.04796520695915571,
+          "ci": {
+            "low": 0.9822252242101863,
+            "high": 0.9964932817007791
+          },
+          "n": 611
+        },
+        "Nomoto13_CK20_clamp": {
+          "auc": 0.9910702895777522,
+          "brier": 0.0418738712809577,
+          "ci": {
+            "low": 0.9849302950672375,
+            "high": 0.9951591147034441
+          },
+          "n": 642
+        }
+      },
+      "cross_auc": {
+        "Limongi18_clamp": {
+          "Limongi18_clamp": 0.9996714856961036,
+          "WW95_native": 0.9118686265498216,
+          "Nomoto13_blend": 0.9913276985384749,
+          "Nomoto13_clamp": 0.9913717203733051,
+          "Nomoto13_CK20_blend": 0.9924978411053541,
+          "Nomoto13_CK20_clamp": 0.9882212867287493
+        },
+        "WW95_native": {
+          "Limongi18_clamp": 0.9945961364160568,
+          "WW95_native": 0.9997275805192316,
+          "Nomoto13_blend": 0.9940130304631096,
+          "Nomoto13_clamp": 0.9939690086282795,
+          "Nomoto13_CK20_blend": 0.9936312607944732,
+          "Nomoto13_CK20_clamp": 0.9923034400646341
+        },
+        "Nomoto13_blend": {
+          "Limongi18_clamp": 0.9750326424205422,
+          "WW95_native": 0.8726722140867553,
+          "Nomoto13_blend": 0.9995157598168694,
+          "Nomoto13_clamp": 0.9995157598168692,
+          "Nomoto13_CK20_blend": 0.9880181347150259,
+          "Nomoto13_CK20_clamp": 0.9818854445720115
+        },
+        "Nomoto13_clamp": {
+          "Limongi18_clamp": 0.975212661374047,
+          "WW95_native": 0.8696290021156887,
+          "Nomoto13_blend": 0.9992516288078888,
+          "Nomoto13_clamp": 0.9995157598168691,
+          "Nomoto13_CK20_blend": 0.9882879965457685,
+          "Nomoto13_CK20_clamp": 0.9817578772802653
+        },
+        "Nomoto13_CK20_blend": {
+          "Limongi18_clamp": 0.9474477684387291,
+          "WW95_native": 0.7776721101855246,
+          "Nomoto13_blend": 0.98274344074661,
+          "Nomoto13_clamp": 0.9825673534072898,
+          "Nomoto13_CK20_blend": 0.9998920552677029,
+          "Nomoto13_CK20_clamp": 0.9795041884594123
+        },
+        "Nomoto13_CK20_clamp": {
+          "Limongi18_clamp": 0.9657616294309497,
+          "WW95_native": 0.7703848376750513,
+          "Nomoto13_blend": 0.9857809473498854,
+          "Nomoto13_clamp": 0.9857369255150552,
+          "Nomoto13_CK20_blend": 0.9946567357512953,
+          "Nomoto13_CK20_clamp": 0.9998724327082535
+        }
+      },
+      "cross_brier": {
+        "Limongi18_clamp": {
+          "Limongi18_clamp": 0.011511909940579762,
+          "WW95_native": 0.12282883403639856,
+          "Nomoto13_blend": 0.06551372131605183,
+          "Nomoto13_clamp": 0.06562638627481635,
+          "Nomoto13_CK20_blend": 0.06405652143840503,
+          "Nomoto13_CK20_clamp": 0.08757078488925922
+        },
+        "WW95_native": {
+          "Limongi18_clamp": 0.03245999744372463,
+          "WW95_native": 0.010815798838935147,
+          "Nomoto13_blend": 0.05898410125201183,
+          "Nomoto13_clamp": 0.05926183143609112,
+          "Nomoto13_CK20_blend": 0.061630224528223906,
+          "Nomoto13_CK20_clamp": 0.07693255079786311
+        },
+        "Nomoto13_blend": {
+          "Limongi18_clamp": 0.082577364504497,
+          "WW95_native": 0.16463213545885227,
+          "Nomoto13_blend": 0.013885089370570858,
+          "Nomoto13_clamp": 0.014279871911812564,
+          "Nomoto13_CK20_blend": 0.06113615345486294,
+          "Nomoto13_CK20_clamp": 0.08689514318284504
+        },
+        "Nomoto13_clamp": {
+          "Limongi18_clamp": 0.08154587735173598,
+          "WW95_native": 0.16477383529815162,
+          "Nomoto13_blend": 0.014944300516265621,
+          "Nomoto13_clamp": 0.01399136111033261,
+          "Nomoto13_CK20_blend": 0.06057352401757704,
+          "Nomoto13_CK20_clamp": 0.0865236814027258
+        },
+        "Nomoto13_CK20_blend": {
+          "Limongi18_clamp": 0.14530756833624323,
+          "WW95_native": 0.22977321754114657,
+          "Nomoto13_blend": 0.06543026357742239,
+          "Nomoto13_clamp": 0.06575109223019586,
+          "Nomoto13_CK20_blend": 0.010840696089225312,
+          "Nomoto13_CK20_clamp": 0.08886621721355166
+        },
+        "Nomoto13_CK20_clamp": {
+          "Limongi18_clamp": 0.09767980495073669,
+          "WW95_native": 0.2048913854949765,
+          "Nomoto13_blend": 0.04957851655033911,
+          "Nomoto13_clamp": 0.04960236821951835,
+          "Nomoto13_CK20_blend": 0.028608723554348982,
+          "Nomoto13_CK20_clamp": 0.01187444756416531
+        }
+      },
+      "cross_ci": {
+        "Limongi18_clamp->Limongi18_clamp": {
+          "low": 0.9995824823478401,
+          "high": 0.9997749205755624
+        },
+        "Limongi18_clamp->WW95_native": {
+          "low": 0.9075407007135343,
+          "high": 0.9159368175579837
+        },
+        "Limongi18_clamp->Nomoto13_blend": {
+          "low": 0.9827848638147075,
+          "high": 0.998136927220035
+        },
+        "Limongi18_clamp->Nomoto13_clamp": {
+          "low": 0.9827501145503268,
+          "high": 0.9981110906058618
+        },
+        "Limongi18_clamp->Nomoto13_CK20_blend": {
+          "low": 0.9840101764518496,
+          "high": 0.9984746003417093
+        },
+        "Limongi18_clamp->Nomoto13_CK20_clamp": {
+          "low": 0.9781965033266996,
+          "high": 0.9978098061312106
+        },
+        "WW95_native->Limongi18_clamp": {
+          "low": 0.9937243096969557,
+          "high": 0.9954858272678541
+        },
+        "WW95_native->WW95_native": {
+          "low": 0.9996580971732019,
+          "high": 0.9997762697947469
+        },
+        "WW95_native->Nomoto13_blend": {
+          "low": 0.9894195698753434,
+          "high": 0.997849334944119
+        },
+        "WW95_native->Nomoto13_clamp": {
+          "low": 0.9893458693429977,
+          "high": 0.9978320067666785
+        },
+        "WW95_native->Nomoto13_CK20_blend": {
+          "low": 0.9866593433608952,
+          "high": 0.9986903383151551
+        },
+        "WW95_native->Nomoto13_CK20_clamp": {
+          "low": 0.9854683707358461,
+          "high": 0.9975273206668492
+        },
+        "Nomoto13_blend->Limongi18_clamp": {
+          "low": 0.9730497507547486,
+          "high": 0.9773221162106847
+        },
+        "Nomoto13_blend->WW95_native": {
+          "low": 0.8671952534920141,
+          "high": 0.8770730153045656
+        },
+        "Nomoto13_blend->Nomoto13_blend": {
+          "low": 0.9981400917636741,
+          "high": 1.0
+        },
+        "Nomoto13_blend->Nomoto13_clamp": {
+          "low": 0.9981400917636741,
+          "high": 1.0
+        },
+        "Nomoto13_blend->Nomoto13_CK20_blend": {
+          "low": 0.9799187874631717,
+          "high": 0.9959523809523809
+        },
+        "Nomoto13_blend->Nomoto13_CK20_clamp": {
+          "low": 0.9712032748206676,
+          "high": 0.9917618681461234
+        },
+        "Nomoto13_clamp->Limongi18_clamp": {
+          "low": 0.9731263254455922,
+          "high": 0.977485917754531
+        },
+        "Nomoto13_clamp->WW95_native": {
+          "low": 0.8642032851198462,
+          "high": 0.8742608235810987
+        },
+        "Nomoto13_clamp->Nomoto13_blend": {
+          "low": 0.9974058470559726,
+          "high": 0.9999518157841347
+        },
+        "Nomoto13_clamp->Nomoto13_clamp": {
+          "low": 0.998140091763674,
+          "high": 1.0
+        },
+        "Nomoto13_clamp->Nomoto13_CK20_blend": {
+          "low": 0.980404798943004,
+          "high": 0.9959759424603174
+        },
+        "Nomoto13_clamp->Nomoto13_CK20_clamp": {
+          "low": 0.9708381946584776,
+          "high": 0.9915935955160539
+        },
+        "Nomoto13_CK20_blend->Limongi18_clamp": {
+          "low": 0.943558012456224,
+          "high": 0.9520046291575761
+        },
+        "Nomoto13_CK20_blend->WW95_native": {
+          "low": 0.7710370493862948,
+          "high": 0.7841695128504628
+        },
+        "Nomoto13_CK20_blend->Nomoto13_blend": {
+          "low": 0.9700717613836953,
+          "high": 0.9940012366826246
+        },
+        "Nomoto13_CK20_blend->Nomoto13_clamp": {
+          "low": 0.9701010870103498,
+          "high": 0.9937629369096246
+        },
+        "Nomoto13_CK20_blend->Nomoto13_CK20_blend": {
+          "low": 0.9995719262805017,
+          "high": 1.0
+        },
+        "Nomoto13_CK20_blend->Nomoto13_CK20_clamp": {
+          "low": 0.9665271107884743,
+          "high": 0.9907042539396718
+        },
+        "Nomoto13_CK20_clamp->Limongi18_clamp": {
+          "low": 0.9628382116971458,
+          "high": 0.9695562050059416
+        },
+        "Nomoto13_CK20_clamp->WW95_native": {
+          "low": 0.7644086788095231,
+          "high": 0.7767732181680158
+        },
+        "Nomoto13_CK20_clamp->Nomoto13_blend": {
+          "low": 0.9739735846266258,
+          "high": 0.9963970997309466
+        },
+        "Nomoto13_CK20_clamp->Nomoto13_clamp": {
+          "low": 0.9739735846266256,
+          "high": 0.9963970997309467
+        },
+        "Nomoto13_CK20_clamp->Nomoto13_CK20_blend": {
+          "low": 0.9901908289898744,
+          "high": 0.9987227393999595
+        },
+        "Nomoto13_CK20_clamp->Nomoto13_CK20_clamp": {
+          "low": 0.999395919832083,
+          "high": 1.0
+        }
+      },
+      "loto": {
+        "Limongi18_clamp": {
+          "auc": 0.993023792205851,
+          "brier": 0.03700531769838479,
+          "ci": {
+            "low": 0.9920402515171527,
+            "high": 0.9941927031481055
+          }
+        },
+        "WW95_native": {
+          "auc": 0.918015070891842,
+          "brier": 0.12342710334802878,
+          "ci": {
+            "low": 0.9134094490266768,
+            "high": 0.9215497652428722
+          }
+        },
+        "Nomoto13_blend": {
+          "auc": 1.0,
+          "brier": 0.0009247571753570143,
+          "ci": {
+            "low": 1.0,
+            "high": 1.0
+          }
+        },
+        "Nomoto13_clamp": {
+          "auc": 1.0,
+          "brier": 0.0010401612369078668,
+          "ci": {
+            "low": 1.0,
+            "high": 1.0
+          }
+        },
+        "Nomoto13_CK20_blend": {
+          "auc": 0.9981109671848014,
+          "brier": 0.03005785472215662,
+          "ci": {
+            "low": 0.995221967113847,
+            "high": 0.9996728955727615
+          }
+        },
+        "Nomoto13_CK20_clamp": {
+          "auc": 0.9951099204830548,
+          "brier": 0.06075515710888914,
+          "ci": {
+            "low": 0.9908138117055868,
+            "high": 0.9988323522853688
+          }
+        }
+      }
+    },
+    "observed": {
+      "within": {
+        "Limongi18_clamp": {
+          "auc": 0.975673761690414,
+          "brier": 0.06112077858096393,
+          "ci": {
+            "low": 0.9729241572922934,
+            "high": 0.9783258382649138
+          },
+          "n": 9823
+        },
+        "WW95_native": {
+          "auc": 0.9682815977409875,
+          "brier": 0.07249012184440032,
+          "ci": {
+            "low": 0.9655935015758964,
+            "high": 0.9705632290272542
+          },
+          "n": 19564
+        },
+        "Nomoto13_blend": {
+          "auc": 0.9351558372952979,
+          "brier": 0.1226487620093803,
+          "ci": {
+            "low": 0.8831386597237937,
+            "high": 0.9764813668479781
+          },
+          "n": 667
+        },
+        "Nomoto13_clamp": {
+          "auc": 0.9355960556435987,
+          "brier": 0.12259942007754691,
+          "ci": {
+            "low": 0.8848081399162621,
+            "high": 0.97690256208538
+          },
+          "n": 667
+        },
+        "Nomoto13_CK20_blend": {
+          "auc": 0.9382016407599306,
+          "brier": 0.12689100318960406,
+          "ci": {
+            "low": 0.8886800058317833,
+            "high": 0.9731718419613417
+          },
+          "n": 611
+        },
+        "Nomoto13_CK20_clamp": {
+          "auc": 0.8987115703533612,
+          "brier": 0.1557693928112773,
+          "ci": {
+            "low": 0.8367111481601873,
+            "high": 0.9476792027741396
+          },
+          "n": 642
+        }
+      },
+      "cross_auc": {
+        "Limongi18_clamp": {
+          "Limongi18_clamp": 0.9966532851184499,
+          "WW95_native": 0.88889185702926,
+          "Nomoto13_blend": 0.9728825497446731,
+          "Nomoto13_clamp": 0.9732787462581437,
+          "Nomoto13_CK20_blend": 0.9607081174438684,
+          "Nomoto13_CK20_clamp": 0.9443381383679891
+        },
+        "WW95_native": {
+          "Limongi18_clamp": 0.9720890706536909,
+          "WW95_native": 0.9970431104929741,
+          "Nomoto13_blend": 0.9565944708575451,
+          "Nomoto13_clamp": 0.956550449022715,
+          "Nomoto13_CK20_blend": 0.9667530224525042,
+          "Nomoto13_CK20_clamp": 0.9438703916315856
+        },
+        "Nomoto13_blend": {
+          "Limongi18_clamp": 0.9424589246467892,
+          "WW95_native": 0.8661889388438827,
+          "Nomoto13_blend": 0.99995597816517,
+          "Nomoto13_clamp": 0.99995597816517,
+          "Nomoto13_CK20_blend": 0.9445703799654572,
+          "Nomoto13_CK20_clamp": 0.8977760768805544
+        },
+        "Nomoto13_clamp": {
+          "Limongi18_clamp": 0.9424190898285023,
+          "WW95_native": 0.8634161784716211,
+          "Nomoto13_blend": 0.99995597816517,
+          "Nomoto13_clamp": 0.99995597816517,
+          "Nomoto13_CK20_blend": 0.9446243523316058,
+          "Nomoto13_CK20_clamp": 0.8977760768805544
+        },
+        "Nomoto13_CK20_blend": {
+          "Limongi18_clamp": 0.9375892902369811,
+          "WW95_native": 0.7972180023310496,
+          "Nomoto13_blend": 0.9440922697658033,
+          "Nomoto13_clamp": 0.9439161824264831,
+          "Nomoto13_CK20_blend": 0.9999460276338515,
+          "Nomoto13_CK20_clamp": 0.9313687970404387
+        },
+        "Nomoto13_CK20_clamp": {
+          "Limongi18_clamp": 0.9432831365444164,
+          "WW95_native": 0.8263860736224186,
+          "Nomoto13_blend": 0.9495509772847329,
+          "Nomoto13_clamp": 0.949594999119563,
+          "Nomoto13_CK20_blend": 0.9668609671848012,
+          "Nomoto13_CK20_clamp": 0.9997023429859251
+        }
+      },
+      "cross_brier": {
+        "Limongi18_clamp": {
+          "Limongi18_clamp": 0.029731629127403604,
+          "WW95_native": 0.14023872668367615,
+          "Nomoto13_blend": 0.0947394068556255,
+          "Nomoto13_clamp": 0.09458409866391405,
+          "Nomoto13_CK20_blend": 0.1304102815997882,
+          "Nomoto13_CK20_clamp": 0.14571525850527015
+        },
+        "WW95_native": {
+          "Limongi18_clamp": 0.0672273298692058,
+          "WW95_native": 0.03056834035252323,
+          "Nomoto13_blend": 0.08899029660216469,
+          "Nomoto13_clamp": 0.08915668012234594,
+          "Nomoto13_CK20_blend": 0.10631969466078736,
+          "Nomoto13_CK20_clamp": 0.12673220174737587
+        },
+        "Nomoto13_blend": {
+          "Limongi18_clamp": 0.11576840904496115,
+          "WW95_native": 0.18006616867190875,
+          "Nomoto13_blend": 0.018001327101549777,
+          "Nomoto13_clamp": 0.01850040042256516,
+          "Nomoto13_CK20_blend": 0.14601531820048505,
+          "Nomoto13_CK20_clamp": 0.1583030253833767
+        },
+        "Nomoto13_clamp": {
+          "Limongi18_clamp": 0.11557786211782275,
+          "WW95_native": 0.18031080982685915,
+          "Nomoto13_blend": 0.018302529996389153,
+          "Nomoto13_clamp": 0.018004431215049653,
+          "Nomoto13_CK20_blend": 0.1455326840543647,
+          "Nomoto13_CK20_clamp": 0.15796199114514467
+        },
+        "Nomoto13_CK20_blend": {
+          "Limongi18_clamp": 0.11593437329045148,
+          "WW95_native": 0.19707211146268425,
+          "Nomoto13_blend": 0.11635355924845511,
+          "Nomoto13_clamp": 0.11647965858317177,
+          "Nomoto13_CK20_blend": 0.018981699352339104,
+          "Nomoto13_CK20_clamp": 0.1357918844562932
+        },
+        "Nomoto13_CK20_clamp": {
+          "Limongi18_clamp": 0.10560227652488335,
+          "WW95_native": 0.17053645943636983,
+          "Nomoto13_blend": 0.09699351522229284,
+          "Nomoto13_clamp": 0.09695258595591158,
+          "Nomoto13_CK20_blend": 0.10254735035694496,
+          "Nomoto13_CK20_clamp": 0.02484257553012715
+        }
+      },
+      "cross_ci": {
+        "Limongi18_clamp->Limongi18_clamp": {
+          "low": 0.9960720019705062,
+          "high": 0.9972367467668447
+        },
+        "Limongi18_clamp->WW95_native": {
+          "low": 0.8845164707139638,
+          "high": 0.8937092445987267
+        },
+        "Limongi18_clamp->Nomoto13_blend": {
+          "low": 0.9459371481397624,
+          "high": 0.9908176042201011
+        },
+        "Limongi18_clamp->Nomoto13_clamp": {
+          "low": 0.9472758274847174,
+          "high": 0.9909030511811022
+        },
+        "Limongi18_clamp->Nomoto13_CK20_blend": {
+          "low": 0.9328292924457456,
+          "high": 0.9872542594185147
+        },
+        "Limongi18_clamp->Nomoto13_CK20_clamp": {
+          "low": 0.9120778430625454,
+          "high": 0.972118673459625
+        },
+        "WW95_native->Limongi18_clamp": {
+          "low": 0.9692102705779114,
+          "high": 0.9749771651381074
+        },
+        "WW95_native->WW95_native": {
+          "low": 0.9965811492026382,
+          "high": 0.9974443626768845
+        },
+        "WW95_native->Nomoto13_blend": {
+          "low": 0.9083839584433876,
+          "high": 0.9883018598294706
+        },
+        "WW95_native->Nomoto13_clamp": {
+          "low": 0.9083355344250744,
+          "high": 0.9883018598294706
+        },
+        "WW95_native->Nomoto13_CK20_blend": {
+          "low": 0.9479929084153341,
+          "high": 0.9845232678491017
+        },
+        "WW95_native->Nomoto13_CK20_clamp": {
+          "low": 0.9040779373784286,
+          "high": 0.9728912010215217
+        },
+        "Nomoto13_blend->Limongi18_clamp": {
+          "low": 0.937962433384593,
+          "high": 0.9465259181435359
+        },
+        "Nomoto13_blend->WW95_native": {
+          "low": 0.8599898045904589,
+          "high": 0.8715126168610466
+        },
+        "Nomoto13_blend->Nomoto13_blend": {
+          "low": 0.9997527597917139,
+          "high": 1.0
+        },
+        "Nomoto13_blend->Nomoto13_clamp": {
+          "low": 0.9997527597917139,
+          "high": 1.0
+        },
+        "Nomoto13_blend->Nomoto13_CK20_blend": {
+          "low": 0.9126160667514774,
+          "high": 0.9812673449301856
+        },
+        "Nomoto13_blend->Nomoto13_CK20_clamp": {
+          "low": 0.846299096114786,
+          "high": 0.9502990451129036
+        },
+        "Nomoto13_clamp->Limongi18_clamp": {
+          "low": 0.9379328802988257,
+          "high": 0.9464786355956845
+        },
+        "Nomoto13_clamp->WW95_native": {
+          "low": 0.8573284283406857,
+          "high": 0.868623504601923
+        },
+        "Nomoto13_clamp->Nomoto13_blend": {
+          "low": 0.9997527597917139,
+          "high": 1.0
+        },
+        "Nomoto13_clamp->Nomoto13_clamp": {
+          "low": 0.9997527597917139,
+          "high": 1.0
+        },
+        "Nomoto13_clamp->Nomoto13_CK20_blend": {
+          "low": 0.9127384333659513,
+          "high": 0.9813121897951065
+        },
+        "Nomoto13_clamp->Nomoto13_CK20_clamp": {
+          "low": 0.8462622280266202,
+          "high": 0.9509537101289366
+        },
+        "Nomoto13_CK20_blend->Limongi18_clamp": {
+          "low": 0.9316020281689127,
+          "high": 0.9417756235322624
+        },
+        "Nomoto13_CK20_blend->WW95_native": {
+          "low": 0.7907093938615225,
+          "high": 0.8037354785758622
+        },
+        "Nomoto13_CK20_blend->Nomoto13_blend": {
+          "low": 0.9038972671244928,
+          "high": 0.9717820954019689
+        },
+        "Nomoto13_CK20_blend->Nomoto13_clamp": {
+          "low": 0.9037772671244929,
+          "high": 0.9715431125131437
+        },
+        "Nomoto13_CK20_blend->Nomoto13_CK20_blend": {
+          "low": 0.9997665702166749,
+          "high": 1.0
+        },
+        "Nomoto13_CK20_blend->Nomoto13_CK20_clamp": {
+          "low": 0.8900352489162158,
+          "high": 0.9691216112682696
+        },
+        "Nomoto13_CK20_clamp->Limongi18_clamp": {
+          "low": 0.9384718403754143,
+          "high": 0.9469100629955393
+        },
+        "Nomoto13_CK20_clamp->WW95_native": {
+          "low": 0.8204831235543226,
+          "high": 0.8316565741799393
+        },
+        "Nomoto13_CK20_clamp->Nomoto13_blend": {
+          "low": 0.9014137251833166,
+          "high": 0.9821314302544584
+        },
+        "Nomoto13_CK20_clamp->Nomoto13_clamp": {
+          "low": 0.9014403533026106,
+          "high": 0.982175945726615
+        },
+        "Nomoto13_CK20_clamp->Nomoto13_CK20_blend": {
+          "low": 0.9422685809559023,
+          "high": 0.9862668381395194
+        },
+        "Nomoto13_CK20_clamp->Nomoto13_CK20_clamp": {
+          "low": 0.9984268233808675,
+          "high": 1.0
+        }
+      },
+      "loto": {
+        "Limongi18_clamp": {
+          "auc": 0.9712222453362541,
+          "brier": 0.0695561014417606,
+          "ci": {
+            "low": 0.9679233048771301,
+            "high": 0.9741547387424339
+          }
+        },
+        "WW95_native": {
+          "auc": 0.8718064341369323,
+          "brier": 0.15506570112117893,
+          "ci": {
+            "low": 0.8665402274037193,
+            "high": 0.8765345815374818
+          }
+        },
+        "Nomoto13_blend": {
+          "auc": 1.0,
+          "brier": 0.0019077282928738762,
+          "ci": {
+            "low": 0.9999999999999999,
+            "high": 1.0
+          }
+        },
+        "Nomoto13_clamp": {
+          "auc": 1.0,
+          "brier": 0.0021733389134562576,
+          "ci": {
+            "low": 0.9999999999999999,
+            "high": 1.0
+          }
+        },
+        "Nomoto13_CK20_blend": {
+          "auc": 0.9759283246977547,
+          "brier": 0.10576150841651977,
+          "ci": {
+            "low": 0.9573855001334898,
+            "high": 0.9915144990406549
+          }
+        },
+        "Nomoto13_CK20_clamp": {
+          "auc": 0.9427222860058679,
+          "brier": 0.12778320284696812,
+          "ci": {
+            "low": 0.9099423424248677,
+            "high": 0.9747786146775606
+          }
+        }
+      }
+    }
+  }
+}

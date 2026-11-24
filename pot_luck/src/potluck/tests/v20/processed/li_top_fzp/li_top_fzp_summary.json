@@ -1,0 +1,202 @@
+{
+  "shared_ylim": [
+    -1.3376,
+    2.3576
+  ],
+  "Limongi18_clamp": {
+    "n_stars": 385,
+    "max_expected_fz": 0.5568483035082963,
+    "median_expected_fz": 0.04094901280630175,
+    "top": [
+      {
+        "star": "J0124+2508",
+        "feh": -3.17,
+        "is_giant": false,
+        "expected_fz": 0.5568483035082963,
+        "n_measured": 5
+      },
+      {
+        "star": "J0849+1914",
+        "feh": -2.65,
+        "is_giant": false,
+        "expected_fz": 0.5521133294938458,
+        "n_measured": 4
+      },
+      {
+        "star": "J1151-0054",
+        "feh": -3.05,
+        "is_giant": false,
+        "expected_fz": 0.4552476239712461,
+        "n_measured": 5
+      },
+      {
+        "star": "J0409+2009",
+        "feh": -3.37,
+        "is_giant": true,
+        "expected_fz": 0.4474672519829799,
+        "n_measured": 8
+      },
+      {
+        "star": "J0440+1706",
+        "feh": -3.4,
+        "is_giant": false,
+        "expected_fz": 0.41684864828908563,
+        "n_measured": 4
+      },
+      {
+        "star": "J1341+5135",
+        "feh": -3.02,
+        "is_giant": false,
+        "expected_fz": 0.4151736556392006,
+        "n_measured": 5
+      }
+    ]
+  },
+  "WW95_native": {
+    "n_stars": 385,
+    "max_expected_fz": 0.21100004566264322,
+    "median_expected_fz": 0.020463970893321717,
+    "top": [
+      {
+        "star": "J0124+2508",
+        "feh": -3.17,
+        "is_giant": false,
+        "expected_fz": 0.21100004566264322,
+        "n_measured": 5
+      },
+      {
+        "star": "J1053+2721",
+        "feh": -2.3,
+        "is_giant": true,
+        "expected_fz": 0.20033892582106907,
+        "n_measured": 6
+      },
+      {
+        "star": "J1035+3158",
+        "feh": -3.68,
+        "is_giant": true,
+        "expected_fz": 0.18377007226928888,
+        "n_measured": 5
+      },
+      {
+        "star": "J1131+1329",
+        "feh": -2.33,
+        "is_giant": false,
+        "expected_fz": 0.1703538931549432,
+        "n_measured": 7
+      },
+      {
+        "star": "J1542+2115",
+        "feh": -3.07,
+        "is_giant": true,
+        "expected_fz": 0.13905789128651375,
+        "n_measured": 6
+      },
+      {
+        "star": "J1151-0054",
+        "feh": -3.05,
+        "is_giant": false,
+        "expected_fz": 0.13102403438934118,
+        "n_measured": 5
+      }
+    ]
+  },
+  "Nomoto13_blend": {
+    "n_stars": 385,
+    "max_expected_fz": 0.4366529794124343,
+    "median_expected_fz": 0.02183670976348371,
+    "top": [
+      {
+        "star": "J0440+1706",
+        "feh": -3.4,
+        "is_giant": false,
+        "expected_fz": 0.4366529794124343,
+        "n_measured": 4
+      },
+      {
+        "star": "J1341+5135",
+        "feh": -3.02,
+        "is_giant": false,
+        "expected_fz": 0.433152076208375,
+        "n_measured": 5
+      },
+      {
+        "star": "J0849+1914",
+        "feh": -2.65,
+        "is_giant": false,
+        "expected_fz": 0.34917147262247605,
+        "n_measured": 4
+      },
+      {
+        "star": "J2217+2104",
+        "feh": -4.12,
+        "is_giant": true,
+        "expected_fz": 0.30398626499749765,
+        "n_measured": 10
+      },
+      {
+        "star": "J0705+2552",
+        "feh": -3.32,
+        "is_giant": true,
+        "expected_fz": 0.29697776621262134,
+        "n_measured": 6
+      },
+      {
+        "star": "J1327+0710",
+        "feh": -3.25,
+        "is_giant": false,
+        "expected_fz": 0.2569466347963927,
+        "n_measured": 6
+      }
+    ]
+  },
+  "Nomoto13_clamp": {
+    "n_stars": 385,
+    "max_expected_fz": 0.6811194689604569,
+    "median_expected_fz": 0.012891800835025747,
+    "top": [
+      {
+        "star": "J1341+5135",
+        "feh": -3.02,
+        "is_giant": false,
+        "expected_fz": 0.6811194689604569,
+        "n_measured": 5
+      },
+      {
+        "star": "J0440+1706",
+        "feh": -3.4,
+        "is_giant": false,
+        "expected_fz": 0.5943087621985836,
+        "n_measured": 4
+      },
+      {
+        "star": "J0849+1914",
+        "feh": -2.65,
+        "is_giant": false,
+        "expected_fz": 0.5309429159348695,
+        "n_measured": 4
+      },
+      {
+        "star": "J1327+0710",
+        "feh": -3.25,
+        "is_giant": false,
+        "expected_fz": 0.5304188542234227,
+        "n_measured": 6
+      },
+      {
+        "star": "J0814+3305",
+        "feh": -3.34,
+        "is_giant": true,
+        "expected_fz": 0.4367696175333859,
+        "n_measured": 5
+      },
+      {
+        "star": "J0759+5411",
+        "feh": -3.18,
+        "is_giant": false,
+        "expected_fz": 0.3792487812385784,
+        "n_measured": 4
+      }
+    ]
+  }
+}

@@ -1,0 +1,714 @@
+{
+  "datasets": {
+    "2e5-1e9": {
+      "path": "src/potluck/tests/v5/limongi18_50k_a0_all_elements.npz",
+      "n_clamped": 28437,
+      "n_unclamped": 21563,
+      "clamped_fraction": 0.56874,
+      "label_rate_clamped": 0.18514611245912016,
+      "label_rate_unclamped": 0.30895515466308027,
+      "mean_weight_clamped": 1.338208409502652,
+      "mean_weight_unclamped": 1.2648063014439672,
+      "elements": {
+        "Al/Fe": {
+          "median_clamped": -0.47638198733329773,
+          "median_unclamped": -0.5302491188049316,
+          "delta": 0.05386713147163391
+        },
+        "Ar/Fe": {
+          "median_clamped": 0.27948492765426636,
+          "median_unclamped": 0.2501469552516937,
+          "delta": 0.029337972402572632
+        },
+        "C/Fe": {
+          "median_clamped": -0.0013587698340415955,
+          "median_unclamped": -0.20362786948680878,
+          "delta": 0.20226909965276718
+        },
+        "Ca/Fe": {
+          "median_clamped": 0.2755556106567383,
+          "median_unclamped": 0.23942603170871735,
+          "delta": 0.036129578948020935
+        },
+        "Cl/Fe": {
+          "median_clamped": -1.1185439825057983,
+          "median_unclamped": -1.2354669570922852,
+          "delta": 0.11692297458648682
+        },
+        "Co/Fe": {
+          "median_clamped": -0.5922150611877441,
+          "median_unclamped": -0.6767957210540771,
+          "delta": 0.08458065986633301
+        },
+        "Cr/Fe": {
+          "median_clamped": -0.032768551260232925,
+          "median_unclamped": 0.02240147814154625,
+          "delta": -0.055170029401779175
+        },
+        "Cu/Fe": {
+          "median_clamped": -0.9928447604179382,
+          "median_unclamped": -1.1369943022727966,
+          "delta": 0.1441495418548584
+        },
+        "F/Fe": {
+          "median_clamped": -3.2598471641540527,
+          "median_unclamped": -2.9924094676971436,
+          "delta": -0.2674376964569092
+        },
+        "Ga/Fe": {
+          "median_clamped": -2.7490376234054565,
+          "median_unclamped": -2.2515628337860107,
+          "delta": -0.4974747896194458
+        },
+        "Ge/Fe": {
+          "median_clamped": -3.1894214153289795,
+          "median_unclamped": -3.0022690296173096,
+          "delta": -0.18715238571166992
+        },
+        "K/Fe": {
+          "median_clamped": -0.8828495740890503,
+          "median_unclamped": -1.1169331073760986,
+          "delta": 0.23408353328704834
+        },
+        "Mg/Fe": {
+          "median_clamped": 0.13621532917022705,
+          "median_unclamped": 0.1343497931957245,
+          "delta": 0.0018655359745025635
+        },
+        "Mn/Fe": {
+          "median_clamped": -0.6782934665679932,
+          "median_unclamped": -0.6337993741035461,
+          "delta": -0.04449409246444702
+        },
+        "N/Fe": {
+          "median_clamped": -2.4884157180786133,
+          "median_unclamped": -2.272634983062744,
+          "delta": -0.21578073501586914
+        },
+        "Na/Fe": {
+          "median_clamped": -0.5495474934577942,
+          "median_unclamped": -0.857025146484375,
+          "delta": 0.3074776530265808
+        },
+        "Ne/Fe": {
+          "median_clamped": 0.2760884463787079,
+          "median_unclamped": 0.12155195325613022,
+          "delta": 0.15453649312257767
+        },
+        "Ni/Fe": {
+          "median_clamped": -0.07960803806781769,
+          "median_unclamped": -0.1720413714647293,
+          "delta": 0.09243333339691162
+        },
+        "O/Fe": {
+          "median_clamped": 0.446388840675354,
+          "median_unclamped": 0.4013561010360718,
+          "delta": 0.04503273963928223
+        },
+        "P/Fe": {
+          "median_clamped": -0.5035648345947266,
+          "median_unclamped": -0.5645933151245117,
+          "delta": 0.061028480529785156
+        },
+        "S/Fe": {
+          "median_clamped": 0.38894122838974,
+          "median_unclamped": 0.40034154057502747,
+          "delta": -0.011400312185287476
+        },
+        "Sc/Fe": {
+          "median_clamped": -1.3706839084625244,
+          "median_unclamped": -1.598747730255127,
+          "delta": 0.22806382179260254
+        },
+        "Si/Fe": {
+          "median_clamped": 0.4214414954185486,
+          "median_unclamped": 0.4358752965927124,
+          "delta": -0.014433801174163818
+        },
+        "Ti/Fe": {
+          "median_clamped": -0.31182223558425903,
+          "median_unclamped": -0.24116533994674683,
+          "delta": -0.07065689563751221
+        },
+        "V/Fe": {
+          "median_clamped": -0.7772673964500427,
+          "median_unclamped": -0.6891653537750244,
+          "delta": -0.08810204267501831
+        },
+        "Zn/Fe": {
+          "median_clamped": -0.3010489344596863,
+          "median_unclamped": -0.17313314974308014,
+          "delta": -0.12791578471660614
+        }
+      }
+    },
+    "1e6-1e9": {
+      "path": "src/potluck/tests/v5/limongi18_50k_w1_all_elements.npz",
+      "n_clamped": 31441,
+      "n_unclamped": 18559,
+      "clamped_fraction": 0.62882,
+      "label_rate_clamped": 0.19299640596673134,
+      "label_rate_unclamped": 0.24414030928390537,
+      "mean_weight_clamped": 1.1651837350848917,
+      "mean_weight_unclamped": 1.1960239863459041,
+      "elements": {
+        "Al/Fe": {
+          "median_clamped": -0.4871150851249695,
+          "median_unclamped": -0.5553494095802307,
+          "delta": 0.06823432445526123
+        },
+        "Ar/Fe": {
+          "median_clamped": 0.27856528759002686,
+          "median_unclamped": 0.21303178369998932,
+          "delta": 0.06553350389003754
+        },
+        "C/Fe": {
+          "median_clamped": -0.025783268734812737,
+          "median_unclamped": -0.27678152918815613,
+          "delta": 0.2509982604533434
+        },
+        "Ca/Fe": {
+          "median_clamped": 0.27459749579429626,
+          "median_unclamped": 0.20746079087257385,
+          "delta": 0.06713670492172241
+        },
+        "Cl/Fe": {
+          "median_clamped": -1.1359784603118896,
+          "median_unclamped": -1.268258810043335,
+          "delta": 0.1322803497314453
+        },
+        "Co/Fe": {
+          "median_clamped": -0.6041863560676575,
+          "median_unclamped": -0.6778620481491089,
+          "delta": 0.07367569208145142
+        },
+        "Cr/Fe": {
+          "median_clamped": -0.027877677232027054,
+          "median_unclamped": 0.015407921746373177,
+          "delta": -0.04328559897840023
+        },
+        "Cu/Fe": {
+          "median_clamped": -1.0075498223304749,
+          "median_unclamped": -1.12800133228302,
+          "delta": 0.12045150995254517
+        },
+        "F/Fe": {
+          "median_clamped": -3.256852388381958,
+          "median_unclamped": -2.9990639686584473,
+          "delta": -0.25778841972351074
+        },
+        "Ga/Fe": {
+          "median_clamped": -2.746115207672119,
+          "median_unclamped": -2.1842235326766968,
+          "delta": -0.5618916749954224
+        },
+        "Ge/Fe": {
+          "median_clamped": -3.189605951309204,
+          "median_unclamped": -3.01322865486145,
+          "delta": -0.1763772964477539
+        },
+        "K/Fe": {
+          "median_clamped": -0.905001163482666,
+          "median_unclamped": -1.1749845743179321,
+          "delta": 0.2699834108352661
+        },
+        "Mg/Fe": {
+          "median_clamped": 0.1324487030506134,
+          "median_unclamped": 0.10352729260921478,
+          "delta": 0.02892141044139862
+        },
+        "Mn/Fe": {
+          "median_clamped": -0.6768569350242615,
+          "median_unclamped": -0.6526262760162354,
+          "delta": -0.024230659008026123
+        },
+        "N/Fe": {
+          "median_clamped": -2.491344451904297,
+          "median_unclamped": -2.3008432388305664,
+          "delta": -0.19050121307373047
+        },
+        "Na/Fe": {
+          "median_clamped": -0.5769921541213989,
+          "median_unclamped": -0.9283646941184998,
+          "delta": 0.35137253999710083
+        },
+        "Ne/Fe": {
+          "median_clamped": 0.25805601477622986,
+          "median_unclamped": 0.06677119433879852,
+          "delta": 0.19128482043743134
+        },
+        "Ni/Fe": {
+          "median_clamped": -0.09099669009447098,
+          "median_unclamped": -0.17409859597682953,
+          "delta": 0.08310190588235855
+        },
+        "O/Fe": {
+          "median_clamped": 0.43562081456184387,
+          "median_unclamped": 0.369864821434021,
+          "delta": 0.06575599312782288
+        },
+        "P/Fe": {
+          "median_clamped": -0.5167338252067566,
+          "median_unclamped": -0.5902811288833618,
+          "delta": 0.07354730367660522
+        },
+        "S/Fe": {
+          "median_clamped": 0.39054641127586365,
+          "median_unclamped": 0.36854520440101624,
+          "delta": 0.022001206874847412
+        },
+        "Sc/Fe": {
+          "median_clamped": -1.3943352699279785,
+          "median_unclamped": -1.65031898021698,
+          "delta": 0.25598371028900146
+        },
+        "Si/Fe": {
+          "median_clamped": 0.4217454195022583,
+          "median_unclamped": 0.39355751872062683,
+          "delta": 0.02818790078163147
+        },
+        "Ti/Fe": {
+          "median_clamped": -0.31197676062583923,
+          "median_unclamped": -0.24732933938503265,
+          "delta": -0.06464742124080658
+        },
+        "V/Fe": {
+          "median_clamped": -0.7786967754364014,
+          "median_unclamped": -0.7048322558403015,
+          "delta": -0.07386451959609985
+        },
+        "Zn/Fe": {
+          "median_clamped": -0.30439600348472595,
+          "median_unclamped": -0.09497024118900299,
+          "delta": -0.20942576229572296
+        }
+      }
+    },
+    "2e5-1e8": {
+      "path": "src/potluck/tests/v5/limongi18_50k_w2_all_elements.npz",
+      "n_clamped": 25125,
+      "n_unclamped": 24875,
+      "clamped_fraction": 0.5025,
+      "label_rate_clamped": 0.22097512437810946,
+      "label_rate_unclamped": 0.3067738693467337,
+      "mean_weight_clamped": 1.4309369804986674,
+      "mean_weight_unclamped": 1.16049328012727,
+      "elements": {
+        "Al/Fe": {
+          "median_clamped": -0.458993524312973,
+          "median_unclamped": -0.5310508012771606,
+          "delta": 0.07205727696418762
+        },
+        "Ar/Fe": {
+          "median_clamped": 0.30664190649986267,
+          "median_unclamped": 0.24884523451328278,
+          "delta": 0.057796671986579895
+        },
+        "C/Fe": {
+          "median_clamped": 0.050261009484529495,
+          "median_unclamped": -0.20415550470352173,
+          "delta": 0.2544165141880512
+        },
+        "Ca/Fe": {
+          "median_clamped": 0.3019215166568756,
+          "median_unclamped": 0.23936344683170319,
+          "delta": 0.06255806982517242
+        },
+        "Cl/Fe": {
+          "median_clamped": -1.0869944095611572,
+          "median_unclamped": -1.234934687614441,
+          "delta": 0.1479402780532837
+        },
+        "Co/Fe": {
+          "median_clamped": -0.5781028866767883,
+          "median_unclamped": -0.6773719191551208,
+          "delta": 0.09926903247833252
+        },
+        "Cr/Fe": {
+          "median_clamped": -0.03728312999010086,
+          "median_unclamped": 0.023175114765763283,
+          "delta": -0.06045824475586414
+        },
+        "Cu/Fe": {
+          "median_clamped": -0.9763781726360321,
+          "median_unclamped": -1.1380352973937988,
+          "delta": 0.16165712475776672
+        },
+        "F/Fe": {
+          "median_clamped": -3.318953275680542,
+          "median_unclamped": -2.9875411987304688,
+          "delta": -0.33141207695007324
+        },
+        "Ga/Fe": {
+          "median_clamped": -3.0244017839431763,
+          "median_unclamped": -2.2423744201660156,
+          "delta": -0.7820273637771606
+        },
+        "Ge/Fe": {
+          "median_clamped": -3.2332948446273804,
+          "median_unclamped": -3.0027085542678833,
+          "delta": -0.23058629035949707
+        },
+        "K/Fe": {
+          "median_clamped": -0.8404088616371155,
+          "median_unclamped": -1.1187695264816284,
+          "delta": 0.27836066484451294
+        },
+        "Mg/Fe": {
+          "median_clamped": 0.14562304317951202,
+          "median_unclamped": 0.13404271006584167,
+          "delta": 0.011580333113670349
+        },
+        "Mn/Fe": {
+          "median_clamped": -0.6720209121704102,
+          "median_unclamped": -0.6327596306800842,
+          "delta": -0.03926128149032593
+        },
+        "N/Fe": {
+          "median_clamped": -2.5025317668914795,
+          "median_unclamped": -2.273947238922119,
+          "delta": -0.22858452796936035
+        },
+        "Na/Fe": {
+          "median_clamped": -0.49375075101852417,
+          "median_unclamped": -0.8585965037345886,
+          "delta": 0.36484575271606445
+        },
+        "Ne/Fe": {
+          "median_clamped": 0.3175727128982544,
+          "median_unclamped": 0.12043403089046478,
+          "delta": 0.1971386820077896
+        },
+        "Ni/Fe": {
+          "median_clamped": -0.06630229949951172,
+          "median_unclamped": -0.17458245158195496,
+          "delta": 0.10828015208244324
+        },
+        "O/Fe": {
+          "median_clamped": 0.46419328451156616,
+          "median_unclamped": 0.4006543755531311,
+          "delta": 0.06353890895843506
+        },
+        "P/Fe": {
+          "median_clamped": -0.4854060709476471,
+          "median_unclamped": -0.5647489428520203,
+          "delta": 0.07934287190437317
+        },
+        "S/Fe": {
+          "median_clamped": 0.40277034044265747,
+          "median_unclamped": 0.39988791942596436,
+          "delta": 0.0028824210166931152
+        },
+        "Sc/Fe": {
+          "median_clamped": -1.3306660652160645,
+          "median_unclamped": -1.5994701385498047,
+          "delta": 0.26880407333374023
+        },
+        "Si/Fe": {
+          "median_clamped": 0.4334329068660736,
+          "median_unclamped": 0.43420687317848206,
+          "delta": -0.0007739663124084473
+        },
+        "Ti/Fe": {
+          "median_clamped": -0.32155534625053406,
+          "median_unclamped": -0.2418229579925537,
+          "delta": -0.07973238825798035
+        },
+        "V/Fe": {
+          "median_clamped": -0.7852625250816345,
+          "median_unclamped": -0.6867533326148987,
+          "delta": -0.09850919246673584
+        },
+        "Zn/Fe": {
+          "median_clamped": -0.33788856863975525,
+          "median_unclamped": -0.17193958163261414,
+          "delta": -0.1659489870071411
+        }
+      }
+    },
+    "5e6-1e9": {
+      "path": "src/potluck/tests/v5/limongi18_50k_w3_all_elements.npz",
+      "n_clamped": 39198,
+      "n_unclamped": 10802,
+      "clamped_fraction": 0.78396,
+      "label_rate_clamped": 0.1948058574417062,
+      "label_rate_unclamped": 0.0657285687835586,
+      "mean_weight_clamped": 1.05346931858937,
+      "mean_weight_unclamped": 1.4688186672190437,
+      "elements": {
+        "Al/Fe": {
+          "median_clamped": -0.502118319272995,
+          "median_unclamped": -0.5523054003715515,
+          "delta": 0.05018708109855652
+        },
+        "Ar/Fe": {
+          "median_clamped": 0.27163417637348175,
+          "median_unclamped": 0.1709759384393692,
+          "delta": 0.10065823793411255
+        },
+        "C/Fe": {
+          "median_clamped": -0.06754425913095474,
+          "median_unclamped": -0.32051490247249603,
+          "delta": 0.2529706433415413
+        },
+        "Ca/Fe": {
+          "median_clamped": 0.2672729641199112,
+          "median_unclamped": 0.17117448896169662,
+          "delta": 0.09609847515821457
+        },
+        "Cl/Fe": {
+          "median_clamped": -1.1631770730018616,
+          "median_unclamped": -1.279636800289154,
+          "delta": 0.11645972728729248
+        },
+        "Co/Fe": {
+          "median_clamped": -0.6164575517177582,
+          "median_unclamped": -0.6633432805538177,
+          "delta": 0.04688572883605957
+        },
+        "Cr/Fe": {
+          "median_clamped": -0.022123229689896107,
+          "median_unclamped": 0.00011022441685781814,
+          "delta": -0.022233454106753925
+        },
+        "Cu/Fe": {
+          "median_clamped": -1.0267420411109924,
+          "median_unclamped": -1.1036827564239502,
+          "delta": 0.07694071531295776
+        },
+        "F/Fe": {
+          "median_clamped": -3.2539470195770264,
+          "median_unclamped": -2.93523907661438,
+          "delta": -0.3187079429626465
+        },
+        "Ga/Fe": {
+          "median_clamped": -2.705883264541626,
+          "median_unclamped": -2.0666433572769165,
+          "delta": -0.6392399072647095
+        },
+        "Ge/Fe": {
+          "median_clamped": -3.1732277870178223,
+          "median_unclamped": -3.002249598503113,
+          "delta": -0.17097818851470947
+        },
+        "K/Fe": {
+          "median_clamped": -0.9397338926792145,
+          "median_unclamped": -1.2079666256904602,
+          "delta": 0.2682327330112457
+        },
+        "Mg/Fe": {
+          "median_clamped": 0.12520232051610947,
+          "median_unclamped": 0.09504051133990288,
+          "delta": 0.03016180917620659
+        },
+        "Mn/Fe": {
+          "median_clamped": -0.6759861409664154,
+          "median_unclamped": -0.6811825037002563,
+          "delta": 0.005196362733840942
+        },
+        "N/Fe": {
+          "median_clamped": -2.4940682649612427,
+          "median_unclamped": -2.263965606689453,
+          "delta": -0.23010265827178955
+        },
+        "Na/Fe": {
+          "median_clamped": -0.6293428838253021,
+          "median_unclamped": -0.9695725440979004,
+          "delta": 0.34022966027259827
+        },
+        "Ne/Fe": {
+          "median_clamped": 0.2206611931324005,
+          "median_unclamped": 0.041720617562532425,
+          "delta": 0.1789405755698681
+        },
+        "Ni/Fe": {
+          "median_clamped": -0.09892910718917847,
+          "median_unclamped": -0.1703353375196457,
+          "delta": 0.07140623033046722
+        },
+        "O/Fe": {
+          "median_clamped": 0.42180420458316803,
+          "median_unclamped": 0.36472445726394653,
+          "delta": 0.0570797473192215
+        },
+        "P/Fe": {
+          "median_clamped": -0.5318596363067627,
+          "median_unclamped": -0.5880716145038605,
+          "delta": 0.05621197819709778
+        },
+        "S/Fe": {
+          "median_clamped": 0.38830600678920746,
+          "median_unclamped": 0.33278611302375793,
+          "delta": 0.055519893765449524
+        },
+        "Sc/Fe": {
+          "median_clamped": -1.4282402992248535,
+          "median_unclamped": -1.6807807087898254,
+          "delta": 0.2525404095649719
+        },
+        "Si/Fe": {
+          "median_clamped": 0.4189808666706085,
+          "median_unclamped": 0.350607305765152,
+          "delta": 0.06837356090545654
+        },
+        "Ti/Fe": {
+          "median_clamped": -0.3114902377128601,
+          "median_unclamped": -0.23003792762756348,
+          "delta": -0.08145231008529663
+        },
+        "V/Fe": {
+          "median_clamped": -0.7786535620689392,
+          "median_unclamped": -0.7004669904708862,
+          "delta": -0.07818657159805298
+        },
+        "Zn/Fe": {
+          "median_clamped": -0.3004927337169647,
+          "median_unclamped": 0.010336599312722683,
+          "delta": -0.3108293330296874
+        }
+      }
+    },
+    "2e5-5e7": {
+      "path": "src/potluck/tests/v5/limongi18_50k_w4_all_elements.npz",
+      "n_clamped": 22414,
+      "n_unclamped": 27586,
+      "clamped_fraction": 0.44828,
+      "label_rate_clamped": 0.23824395467118764,
+      "label_rate_unclamped": 0.31349235119263397,
+      "mean_weight_clamped": 1.536700795990232,
+      "mean_weight_unclamped": 1.1337624363412688,
+      "elements": {
+        "Al/Fe": {
+          "median_clamped": -0.44111500680446625,
+          "median_unclamped": -0.5342293083667755,
+          "delta": 0.09311430156230927
+        },
+        "Ar/Fe": {
+          "median_clamped": 0.32359378039836884,
+          "median_unclamped": 0.2523856610059738,
+          "delta": 0.07120811939239502
+        },
+        "C/Fe": {
+          "median_clamped": 0.08478738367557526,
+          "median_unclamped": -0.20546746253967285,
+          "delta": 0.2902548462152481
+        },
+        "Ca/Fe": {
+          "median_clamped": 0.31954169273376465,
+          "median_unclamped": 0.24161172658205032,
+          "delta": 0.07792996615171432
+        },
+        "Cl/Fe": {
+          "median_clamped": -1.0573883056640625,
+          "median_unclamped": -1.236275315284729,
+          "delta": 0.1788870096206665
+        },
+        "Co/Fe": {
+          "median_clamped": -0.5605565011501312,
+          "median_unclamped": -0.6805430352687836,
+          "delta": 0.11998653411865234
+        },
+        "Cr/Fe": {
+          "median_clamped": -0.04078773781657219,
+          "median_unclamped": 0.02643005456775427,
+          "delta": -0.06721779238432646
+        },
+        "Cu/Fe": {
+          "median_clamped": -0.9618491530418396,
+          "median_unclamped": -1.1423918008804321,
+          "delta": 0.18054264783859253
+        },
+        "F/Fe": {
+          "median_clamped": -3.338059902191162,
+          "median_unclamped": -2.994501829147339,
+          "delta": -0.34355807304382324
+        },
+        "Ga/Fe": {
+          "median_clamped": -3.0847307443618774,
+          "median_unclamped": -2.2576147317886353,
+          "delta": -0.8271160125732422
+        },
+        "Ge/Fe": {
+          "median_clamped": -3.264143943786621,
+          "median_unclamped": -3.004807710647583,
+          "delta": -0.2593362331390381
+        },
+        "K/Fe": {
+          "median_clamped": -0.8040240406990051,
+          "median_unclamped": -1.1221941709518433,
+          "delta": 0.31817013025283813
+        },
+        "Mg/Fe": {
+          "median_clamped": 0.15403887629508972,
+          "median_unclamped": 0.13303743302822113,
+          "delta": 0.02100144326686859
+        },
+        "Mn/Fe": {
+          "median_clamped": -0.6677296161651611,
+          "median_unclamped": -0.6293376684188843,
+          "delta": -0.038391947746276855
+        },
+        "N/Fe": {
+          "median_clamped": -2.508384346961975,
+          "median_unclamped": -2.2788740396499634,
+          "delta": -0.22951030731201172
+        },
+        "Na/Fe": {
+          "median_clamped": -0.46356043219566345,
+          "median_unclamped": -0.8657410442829132,
+          "delta": 0.40218061208724976
+        },
+        "Ne/Fe": {
+          "median_clamped": 0.3483104109764099,
+          "median_unclamped": 0.1215490847826004,
+          "delta": 0.2267613261938095
+        },
+        "Ni/Fe": {
+          "median_clamped": -0.055613718926906586,
+          "median_unclamped": -0.17684870213270187,
+          "delta": 0.12123498320579529
+        },
+        "O/Fe": {
+          "median_clamped": 0.4810696840286255,
+          "median_unclamped": 0.3995981514453888,
+          "delta": 0.0814715325832367
+        },
+        "P/Fe": {
+          "median_clamped": -0.46323737502098083,
+          "median_unclamped": -0.568547785282135,
+          "delta": 0.10531041026115417
+        },
+        "S/Fe": {
+          "median_clamped": 0.4095753878355026,
+          "median_unclamped": 0.40372855961322784,
+          "delta": 0.00584682822227478
+        },
+        "Sc/Fe": {
+          "median_clamped": -1.2986562252044678,
+          "median_unclamped": -1.6023562550544739,
+          "delta": 0.3037000298500061
+        },
+        "Si/Fe": {
+          "median_clamped": 0.4416895806789398,
+          "median_unclamped": 0.43860146403312683,
+          "delta": 0.0030881166458129883
+        },
+        "Ti/Fe": {
+          "median_clamped": -0.3215690106153488,
+          "median_unclamped": -0.2430792897939682,
+          "delta": -0.07848972082138062
+        },
+        "V/Fe": {
+          "median_clamped": -0.7835895419120789,
+          "median_unclamped": -0.6871297359466553,
+          "delta": -0.09645980596542358
+        },
+        "Zn/Fe": {
+          "median_clamped": -0.34184010326862335,
+          "median_unclamped": -0.1824210360646248,
+          "delta": -0.15941906720399857
+        }
+      }
+    }
+  }
+}

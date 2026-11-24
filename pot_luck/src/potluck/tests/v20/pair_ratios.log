@@ -1,0 +1,38 @@
+best standalone pairs
+  Si/Al    0.913
+  Si/Zn    0.912
+  Ca/Zn    0.894
+  Mn/Zn    0.885
+  Cr/Zn    0.873
+  Na/Si    0.866
+  Ca/Al    0.864
+  Ti/Zn    0.836
+  Mn/Al    0.828
+  Na/Ca    0.826
+  Si/O     0.821
+  Mg/Zn    0.817
+best single [X/Fe]
+  Zn       0.845
+  Al       0.743
+  Co       0.733
+  Na       0.706
+  O        0.682
+  C        0.655
+core7 base 0.941
+  core7 + Si/Zn    +0.0247
+  core7 + Mn/Zn    +0.0245
+  core7 + Cr/Zn    +0.0235
+  core7 + Ca/Zn    +0.0235
+  core7 + Ni/Zn    +0.0230
+  core7 + Ti/Zn    +0.0221
+  core7 + Na/Zn    +0.0214
+  core7 + Mg/Zn    +0.0212
+  core7 + Mn/Al    +0.0199
+  core7 + Si/Al    +0.0192
+full base 0.980
+  full + Si/Al    +0.0008
+  full + C/Al     +0.0004
+  full + Na/Co    +0.0002
+  full + Ca/Cr    +0.0002
+  full + Na/Ni    +0.0001
+  full + Mn/Al    +0.0001

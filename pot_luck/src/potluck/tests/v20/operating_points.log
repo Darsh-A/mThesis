@@ -1,0 +1,6 @@
+Limongi18_clamp        general8    TPR(1e-2)=0.741 TPR(1e-3)=0.493 prec(1e-3)=0.331 Brier=0.0499
+Limongi18_clamp        observed11  TPR(1e-2)=0.727 TPR(1e-3)=0.413 prec(1e-3)=0.292 Brier=0.0512
+WW95_native            general8    TPR(1e-2)=0.673 TPR(1e-3)=0.405 prec(1e-3)=0.288 Brier=0.0583
+WW95_native            observed11  TPR(1e-2)=0.653 TPR(1e-3)=0.398 prec(1e-3)=0.285 Brier=0.0607
+Nomoto13_CK20_blend    general8    TPR(1e-2)=0.727 TPR(1e-3)=0.450 prec(1e-3)=0.310 Brier=0.0498
+Nomoto13_CK20_blend    observed11  TPR(1e-2)=0.673 TPR(1e-3)=0.410 prec(1e-3)=0.291 Brier=0.0529

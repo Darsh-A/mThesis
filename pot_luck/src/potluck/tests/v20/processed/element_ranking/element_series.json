@@ -1,0 +1,85 @@
+{
+  "order": [
+    "Zn",
+    "Si",
+    "Na",
+    "Ni",
+    "Ca",
+    "Co",
+    "Mg",
+    "Mn",
+    "Cr",
+    "C",
+    "Ti"
+  ],
+  "auc_curve": [
+    0.840979312494918,
+    0.920589102656387,
+    0.9519152033045245,
+    0.9563277178063423,
+    0.9616196024960283,
+    0.9631358029605838,
+    0.9641233766364278,
+    0.9646788854045756,
+    0.9655892072465861,
+    0.9658920163700541,
+    0.96585421704842
+  ],
+  "ranking": {
+    "C": {
+      "greedy_step": 10,
+      "median_offset_dex": -0.31292275587717694,
+      "spearman_fzp": -0.2364682355166617
+    },
+    "Na": {
+      "greedy_step": 3,
+      "median_offset_dex": -0.6431025664011637,
+      "spearman_fzp": -0.3415683056438226
+    },
+    "Mg": {
+      "greedy_step": 7,
+      "median_offset_dex": -0.23303786913553873,
+      "spearman_fzp": -0.21162407351187898
+    },
+    "Si": {
+      "greedy_step": 2,
+      "median_offset_dex": 0.1711531082789103,
+      "spearman_fzp": 0.29613666046604326
+    },
+    "Ca": {
+      "greedy_step": 5,
+      "median_offset_dex": 0.11482612291971843,
+      "spearman_fzp": 0.22934052650478412
+    },
+    "Ti": {
+      "greedy_step": 11,
+      "median_offset_dex": -0.13731948534647623,
+      "spearman_fzp": -0.2880676381079959
+    },
+    "Cr": {
+      "greedy_step": 9,
+      "median_offset_dex": 0.16563010215759277,
+      "spearman_fzp": 0.4037079053831705
+    },
+    "Mn": {
+      "greedy_step": 8,
+      "median_offset_dex": 0.1682517925898234,
+      "spearman_fzp": 0.3117420226751401
+    },
+    "Co": {
+      "greedy_step": 6,
+      "median_offset_dex": -0.5115804672241211,
+      "spearman_fzp": -0.5234643117185035
+    },
+    "Ni": {
+      "greedy_step": 4,
+      "median_offset_dex": -0.36540571848551434,
+      "spearman_fzp": -0.3384828045501929
+    },
+    "Zn": {
+      "greedy_step": 1,
+      "median_offset_dex": -1.1580715974171956,
+      "spearman_fzp": -0.6170111388509536
+    }
+  }
+}

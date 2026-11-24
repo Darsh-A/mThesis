@@ -1,0 +1,155 @@
+[1] all
+    median logMdil 7.36  support 0.95  chi2nu 0.69
+[2] pisn_only
+/home/ardo/mlem/Vaults/Thesis/Repl/src/potluck/diagnostics/mdil_inverse.py:312: RuntimeWarning: invalid value encountered in subtract
+  denominator = np.where(d1 != d0, d1 - d0, 1.0)
+/home/ardo/mlem/Vaults/Thesis/Repl/src/potluck/diagnostics/mdil_inverse.py:326: RuntimeWarning: invalid value encountered in multiply
+  + feh_grid[rows, index + 1] * fraction
+    median logMdil 6.83  support 0.94  chi2nu 0.78
+[3] popiii_only
+    median logMdil 5.53  support 0.98  chi2nu 0.79
+[4] pisn+popiii
+    median logMdil 5.97  support 0.97  chi2nu 0.72
+[5] pisn+popii
+    median logMdil 7.07  support 0.93  chi2nu 0.82
+[6] popiii+popii
+    median logMdil 7.03  support 0.97  chi2nu 0.68
+[7] PISN:HW2002
+    median logMdil 7.34  support 0.95  chi2nu 0.68
+[8] PISN:Takahashi-MR
+    median logMdil 7.47  support 0.95  chi2nu 0.71
+[9] PISN:Takahashi-NM
+    median logMdil 7.37  support 0.95  chi2nu 0.75
+[10] PISN:Takahashi-NR
+    median logMdil 7.47  support 0.95  chi2nu 0.68
+[11] PopIII:uniform
+    median logMdil 7.47  support 0.94  chi2nu 0.70
+[12] PopIII:row
+    median logMdil 7.33  support 0.95  chi2nu 0.67
+[13] PopIII:low_mass
+    median logMdil 7.04  support 0.95  chi2nu 0.67
+[14] PopIII:high_mass
+    median logMdil 7.52  support 0.95  chi2nu 0.71
+[15] PopIII:high_energy
+    median logMdil 7.61  support 0.94  chi2nu 0.75
+[16] PopIII:low_energy
+    median logMdil 7.31  support 0.95  chi2nu 0.69
+[17] PopIII:M11_15
+    median logMdil 6.81  support 0.96  chi2nu 0.72
+[18] PopIII:M25
+    median logMdil 6.89  support 0.96  chi2nu 0.67
+[19] PopIII:M40
+    median logMdil 7.30  support 0.95  chi2nu 0.71
+[20] PopIII:M100
+    median logMdil 7.63  support 0.94  chi2nu 0.74
+[21] PopII:Limongi18
+    median logMdil 7.42  support 0.96  chi2nu 0.71
+[22] PopII:Limongi18_V150
+    median logMdil 7.16  support 0.98  chi2nu 0.70
+[23] PopII:Limongi18_V300
+    median logMdil 7.16  support 0.98  chi2nu 0.63
+[24] PopII:Nomoto13
+    median logMdil 7.49  support 0.95  chi2nu 0.70
+[25] PopII:Nomoto13_CK20
+    median logMdil 7.50  support 0.95  chi2nu 0.76
+[26] PopII:WW95
+    median logMdil 6.88  support 0.98  chi2nu 0.83
+{
+  "n_stars": 377,
+  "configurations": 26,
+  "all": {
+    "name": "all",
+    "n_scenarios": 1200,
+    "n_stars": 377,
+    "pooled_log10_mdil": {
+      "p05": 5.168772450031582,
+      "p16": 6.314278456820679,
+      "p50": 7.360551035406997,
+      "p84": 8.258606916505753,
+      "p95": 8.809253450498149
+    },
+    "pooled_mdil": {
+      "p16": 2061951.5520846064,
+      "p50": 22937761.63971399,
+      "p84": 181387316.80999684
+    },
+    "pooled_log10_mdil_raw": {
+      "p05": 3.0,
+      "p16": 3.48411840969032,
+      "p50": 5.036803859931972,
+      "p84": 6.951168140562767,
+      "p95": 7.989069531335232
+    },
+    "per_star_log10_mdil_raw": {
+      "p16": 3.3206811651718837,
+      "p50": 5.052374437722697,
+      "p84": 6.840223547940421
+    },
+    "pooled_log10_mdil_prior": {
+      "p05": 4.293061198343619,
+      "p16": 5.780043842474667,
+      "p50": 7.089274165903951,
+      "p84": 8.08489262758092,
+      "p95": 8.681447465001295
+    },
+    "per_star_log10_mdil_prior": {
+      "p16": 6.6100859375482885,
+      "p50": 7.08307785160217,
+      "p84": 7.661530547340523
+    },
+    "offset_rms": 0.3351525539940778,
+    "max_abs_offset": 0.7313586256080497,
+    "per_star_log10_mdil": {
+      "p16": 6.925735600230306,
+      "p50": 7.421435149447667,
+      "p84": 7.933544043347619
+    },
+    "per_star_band_dex": {
+      "p16": 6.068167116923601,
+      "p50": 7.421435149447667,
+      "p84": 8.683929325441772
+    },
+    "support_fraction": 0.9496021220159151,
+    "support_fraction_raw": 0.6578249336870027,
+    "median_best_reduced_chi2": 0.6900925163764525,
+    "median_best_reduced_chi2_raw": 3.532643437053601,
+    "median_best_chi2": 5.92390983985818,
+    "median_n_elements": 9.0,
+    "censored_fraction": 0.03130194518125553,
+    "offsets": {
+      "C": 0.14852598362213187,
+      "Na": 0.0084802734524273,
+      "Mg": -0.11566612906069146,
+      "Si": -0.022600475551428023,
+      "Ca": 0.018851201295284836,
+      "Ti": -0.7313586256080497,
+      "Cr": 0.10090985862933972,
+      "Mn": -0.2897823161167629,
+      "Co": -0.6157687861182294,
+      "Ni": 0.08988568565309528,
+      "Zn": -0.42770343626570984
+    },
+    "scatter": {
+      "C": 0.4009366940614911,
+      "Na": 0.18625423451936454,
+      "Mg": 0.13146281799411555,
+      "Si": 0.14613237755389596,
+      "Ca": 0.11812246080942254,
+      "Ti": 0.1201393097424991,
+      "Cr": 0.14923284449804777,
+      "Mn": 0.12419957530232374,
+      "Co": 0.13808823072228354,
+      "Ni": 0.12340645152436283,
+      "Zn": 0.13343399999999994
+    },
+    "events": {
+      "median_n_pisn": 0.0,
+      "median_mstar_ii": 102634.28384759357,
+      "median_n_iii": 9.0
+    },
+    "category": "combined",
+    "pisn_table": "HW2002",
+    "popii_table": "Limongi18",
+    "popiii_variant": "uniform"
+  }
+}

@@ -1,0 +1,523 @@
+{
+  "policies": [
+    "Limongi18_clamp",
+    "WW95_native",
+    "Nomoto13_blend",
+    "Nomoto13_clamp",
+    "Nomoto13_CK20_blend",
+    "Nomoto13_CK20_clamp"
+  ],
+  "sigmas": [
+    0.2,
+    0.3
+  ],
+  "subsets": {
+    "all 11": {
+      "elements": [
+        "C",
+        "Na",
+        "Mg",
+        "Si",
+        "Ca",
+        "Ti",
+        "Cr",
+        "Mn",
+        "Co",
+        "Ni",
+        "Zn"
+      ],
+      "0.2": {
+        "within_mean": 0.9675793954411488,
+        "within_min": 0.9546908052535218,
+        "within_max": 0.9750767510255891,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9750767510255891,
+          "WW95_native": 0.960399796996526,
+          "Nomoto13_blend": 0.9546908052535218,
+          "Nomoto13_clamp": 0.9703547550869546,
+          "Nomoto13_CK20_blend": 0.971196216977468,
+          "Nomoto13_CK20_clamp": 0.9737580473068322
+        },
+        "loto": {}
+      },
+      "0.3": {
+        "within_mean": 0.9442535068180679,
+        "within_min": 0.9303240935321953,
+        "within_max": 0.9565603712007604,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9565603712007604,
+          "WW95_native": 0.9311197693241366,
+          "Nomoto13_blend": 0.9303240935321953,
+          "Nomoto13_clamp": 0.9498414296388892,
+          "Nomoto13_CK20_blend": 0.9488777195027215,
+          "Nomoto13_CK20_clamp": 0.9487976577097045
+        },
+        "loto": {}
+      }
+    },
+    "no Zn": {
+      "elements": [
+        "C",
+        "Na",
+        "Mg",
+        "Si",
+        "Ca",
+        "Ti",
+        "Cr",
+        "Mn",
+        "Co",
+        "Ni"
+      ],
+      "0.2": {
+        "within_mean": 0.9520471160651761,
+        "within_min": 0.9381434454145599,
+        "within_max": 0.958926614728673,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.958926614728673,
+          "WW95_native": 0.9503319006880833,
+          "Nomoto13_blend": 0.9381434454145599,
+          "Nomoto13_clamp": 0.9503889946631673,
+          "Nomoto13_CK20_blend": 0.9573073280885798,
+          "Nomoto13_CK20_clamp": 0.957184412807994
+        },
+        "loto": {}
+      },
+      "0.3": {
+        "within_mean": 0.9152288549940737,
+        "within_min": 0.89859936288692,
+        "within_max": 0.9289170981391628,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9289170981391628,
+          "WW95_native": 0.9070930011920483,
+          "Nomoto13_blend": 0.89859936288692,
+          "Nomoto13_clamp": 0.9126297300740369,
+          "Nomoto13_CK20_blend": 0.9234103049728083,
+          "Nomoto13_CK20_clamp": 0.9207236326994663
+        },
+        "loto": {}
+      }
+    },
+    "no Co": {
+      "elements": [
+        "C",
+        "Na",
+        "Mg",
+        "Si",
+        "Ca",
+        "Ti",
+        "Cr",
+        "Mn",
+        "Ni",
+        "Zn"
+      ],
+      "0.2": {
+        "within_mean": 0.9668407268815126,
+        "within_min": 0.9558903205377641,
+        "within_max": 0.9747600690356005,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9747600690356005,
+          "WW95_native": 0.9566413729426118,
+          "Nomoto13_blend": 0.9558903205377641,
+          "Nomoto13_clamp": 0.9700075914116981,
+          "Nomoto13_CK20_blend": 0.9714763014763026,
+          "Nomoto13_CK20_clamp": 0.9722687058850982
+        },
+        "loto": {}
+      },
+      "0.3": {
+        "within_mean": 0.9424883279695108,
+        "within_min": 0.9283056609460671,
+        "within_max": 0.9560055056427498,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9560055056427498,
+          "WW95_native": 0.9283056609460671,
+          "Nomoto13_blend": 0.928497110872909,
+          "Nomoto13_clamp": 0.9505433310180826,
+          "Nomoto13_CK20_blend": 0.9466236888111911,
+          "Nomoto13_CK20_clamp": 0.9449546705260647
+        },
+        "loto": {}
+      }
+    },
+    "no Zn, Co": {
+      "elements": [
+        "C",
+        "Na",
+        "Mg",
+        "Si",
+        "Ca",
+        "Ti",
+        "Cr",
+        "Mn",
+        "Ni"
+      ],
+      "0.2": {
+        "within_mean": 0.9475940429167992,
+        "within_min": 0.9348326592491433,
+        "within_max": 0.9538969089902235,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9538969089902235,
+          "WW95_native": 0.9461675377839713,
+          "Nomoto13_blend": 0.9348326592491433,
+          "Nomoto13_clamp": 0.9460776340423056,
+          "Nomoto13_CK20_blend": 0.951566142191144,
+          "Nomoto13_CK20_clamp": 0.9530233752440069
+        },
+        "loto": {}
+      },
+      "0.3": {
+        "within_mean": 0.9054341661400285,
+        "within_min": 0.8891804093304169,
+        "within_max": 0.9186691829174591,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9186691829174591,
+          "WW95_native": 0.9021050715460059,
+          "Nomoto13_blend": 0.8891804093304169,
+          "Nomoto13_clamp": 0.9035247542848543,
+          "Nomoto13_CK20_blend": 0.9107094988345025,
+          "Nomoto13_CK20_clamp": 0.9084160799269323
+        },
+        "loto": {}
+      }
+    },
+    "no Zn, Co, Mn": {
+      "elements": [
+        "C",
+        "Na",
+        "Mg",
+        "Si",
+        "Ca",
+        "Ti",
+        "Cr",
+        "Ni"
+      ],
+      "0.2": {
+        "within_mean": 0.9457418947432196,
+        "within_min": 0.9334986246797949,
+        "within_max": 0.9517938479135584,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9511622605394924,
+          "WW95_native": 0.9446397914039426,
+          "Nomoto13_blend": 0.9334986246797949,
+          "Nomoto13_clamp": 0.9422538670383009,
+          "Nomoto13_CK20_blend": 0.9511029768842287,
+          "Nomoto13_CK20_clamp": 0.9517938479135584
+        },
+        "loto": {}
+      },
+      "0.3": {
+        "within_mean": 0.9028354148468626,
+        "within_min": 0.8853399767263146,
+        "within_max": 0.9163311127957869,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9163311127957869,
+          "WW95_native": 0.8971255398521341,
+          "Nomoto13_blend": 0.8853399767263146,
+          "Nomoto13_clamp": 0.9006334619593819,
+          "Nomoto13_CK20_blend": 0.9088132527195064,
+          "Nomoto13_CK20_clamp": 0.9087691450280517
+        },
+        "loto": {}
+      }
+    },
+    "PFS-like": {
+      "elements": [
+        "C",
+        "Na",
+        "Mg",
+        "Si",
+        "Ca",
+        "Ti",
+        "Cr",
+        "Mn",
+        "Ni"
+      ],
+      "0.2": {
+        "within_mean": 0.9475940015898298,
+        "within_min": 0.9348324112873274,
+        "within_max": 0.9538969089902236,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9538969089902236,
+          "WW95_native": 0.9461675377839714,
+          "Nomoto13_blend": 0.9348324112873274,
+          "Nomoto13_clamp": 0.9460776340423056,
+          "Nomoto13_CK20_blend": 0.951566142191144,
+          "Nomoto13_CK20_clamp": 0.9530233752440069
+        },
+        "loto": {}
+      },
+      "0.3": {
+        "within_mean": 0.9054341840620427,
+        "within_min": 0.8891804093304169,
+        "within_max": 0.9186692904495442,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9186692904495442,
+          "WW95_native": 0.9021050715460059,
+          "Nomoto13_blend": 0.8891804093304169,
+          "Nomoto13_clamp": 0.9035247542848542,
+          "Nomoto13_CK20_blend": 0.9107094988345025,
+          "Nomoto13_CK20_clamp": 0.9084160799269323
+        },
+        "loto": {}
+      }
+    },
+    "alpha only": {
+      "elements": [
+        "Mg",
+        "Si",
+        "Ca",
+        "Ti"
+      ],
+      "0.2": {
+        "within_mean": 0.8629275973740588,
+        "within_min": 0.8170489096734309,
+        "within_max": 0.9026410825773518,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.8614635116753069,
+          "WW95_native": 0.8170489096734309,
+          "Nomoto13_blend": 0.8321183204356144,
+          "Nomoto13_clamp": 0.875492404987539,
+          "Nomoto13_CK20_blend": 0.8888013548951095,
+          "Nomoto13_CK20_clamp": 0.9026410825773518
+        },
+        "loto": {}
+      },
+      "0.3": {
+        "within_mean": 0.7745373486761125,
+        "within_min": 0.7255402833877466,
+        "within_max": 0.8280614294370623,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.7699713426993947,
+          "WW95_native": 0.7255402833877466,
+          "Nomoto13_blend": 0.7305834119992409,
+          "Nomoto13_clamp": 0.7871711598867577,
+          "Nomoto13_CK20_blend": 0.8058964646464727,
+          "Nomoto13_CK20_clamp": 0.8280614294370623
+        },
+        "loto": {}
+      }
+    },
+    "alpha + Na": {
+      "elements": [
+        "Na",
+        "Mg",
+        "Si",
+        "Ca",
+        "Ti"
+      ],
+      "0.2": {
+        "within_mean": 0.9286572248115235,
+        "within_min": 0.9168729089070199,
+        "within_max": 0.9434174771897609,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9434174771897609,
+          "WW95_native": 0.9186171478012285,
+          "Nomoto13_blend": 0.9168729089070199,
+          "Nomoto13_clamp": 0.9277717033791861,
+          "Nomoto13_CK20_blend": 0.9323042929292957,
+          "Nomoto13_CK20_clamp": 0.932959818662649
+        },
+        "loto": {}
+      },
+      "0.3": {
+        "within_mean": 0.8766051847550006,
+        "within_min": 0.8600221388176861,
+        "within_max": 0.895295686350423,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.895295686350423,
+          "WW95_native": 0.8600221388176861,
+          "Nomoto13_blend": 0.8604334521318519,
+          "Nomoto13_clamp": 0.8788843281923511,
+          "Nomoto13_CK20_blend": 0.8815287490287539,
+          "Nomoto13_CK20_clamp": 0.8834667540089374
+        },
+        "loto": {}
+      }
+    },
+    "alpha + Na, Cr, Ni": {
+      "elements": [
+        "Na",
+        "Mg",
+        "Si",
+        "Ca",
+        "Ti",
+        "Cr",
+        "Ni"
+      ],
+      "0.2": {
+        "within_mean": 0.9408420283573604,
+        "within_min": 0.9289541044995469,
+        "within_max": 0.9504398599932293,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9504398599932293,
+          "WW95_native": 0.941718438906936,
+          "Nomoto13_blend": 0.9289541044995469,
+          "Nomoto13_clamp": 0.9363729441789141,
+          "Nomoto13_CK20_blend": 0.9445137674825197,
+          "Nomoto13_CK20_clamp": 0.9430530550830166
+        },
+        "loto": {}
+      },
+      "0.3": {
+        "within_mean": 0.8961967282177515,
+        "within_min": 0.8790931986801602,
+        "within_max": 0.9147874897172509,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9147874897172509,
+          "WW95_native": 0.8924721664628384,
+          "Nomoto13_blend": 0.8790931986801602,
+          "Nomoto13_clamp": 0.8890464397222821,
+          "Nomoto13_CK20_blend": 0.90245216588967,
+          "Nomoto13_CK20_clamp": 0.899328908834307
+        },
+        "loto": {}
+      }
+    },
+    "core + Co": {
+      "elements": [
+        "Na",
+        "Mg",
+        "Si",
+        "Ca",
+        "Ti",
+        "Cr",
+        "Ni",
+        "Co"
+      ],
+      "0.2": {
+        "within_mean": 0.9464229883120061,
+        "within_min": 0.9344903479623432,
+        "within_max": 0.9568175879478071,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9568175879478071,
+          "WW95_native": 0.9455647010011223,
+          "Nomoto13_blend": 0.9344903479623432,
+          "Nomoto13_clamp": 0.9436484816307473,
+          "Nomoto13_CK20_blend": 0.9487635975135994,
+          "Nomoto13_CK20_clamp": 0.9492532138164179
+        },
+        "loto": {}
+      },
+      "0.3": {
+        "within_mean": 0.90659722609306,
+        "within_min": 0.8872238666223417,
+        "within_max": 0.9241360065809694,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9241360065809694,
+          "WW95_native": 0.8998698544385147,
+          "Nomoto13_blend": 0.8872238666223417,
+          "Nomoto13_clamp": 0.9013209602676416,
+          "Nomoto13_CK20_blend": 0.9145852758352792,
+          "Nomoto13_CK20_clamp": 0.912447392813614
+        },
+        "loto": {}
+      }
+    },
+    "core + Zn": {
+      "elements": [
+        "Na",
+        "Mg",
+        "Si",
+        "Ca",
+        "Ti",
+        "Cr",
+        "Ni",
+        "Zn"
+      ],
+      "0.2": {
+        "within_mean": 0.9657499662479757,
+        "within_min": 0.9563077642547712,
+        "within_max": 0.973585926200732,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.973585926200732,
+          "WW95_native": 0.9565508112421763,
+          "Nomoto13_blend": 0.9563077642547712,
+          "Nomoto13_clamp": 0.9686550685524105,
+          "Nomoto13_CK20_blend": 0.9695344065656577,
+          "Nomoto13_CK20_clamp": 0.9698658206721067
+        },
+        "loto": {}
+      },
+      "0.3": {
+        "within_mean": 0.9404836506452514,
+        "within_min": 0.9270392724558919,
+        "within_max": 0.9534351662177238,
+        "loto_mean": NaN,
+        "loto_min": NaN,
+        "loto_max": NaN,
+        "within": {
+          "Limongi18_clamp": 0.9534351662177238,
+          "WW95_native": 0.9270392724558919,
+          "Nomoto13_blend": 0.9274853026832759,
+          "Nomoto13_clamp": 0.9484197472062403,
+          "Nomoto13_CK20_blend": 0.9434328865578887,
+          "Nomoto13_CK20_clamp": 0.9430895287504876
+        },
+        "loto": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "noiseless": {
+    "k": 5,
+    "features": [
+      "Si/Fe",
+      "Al/Fe",
+      "P/Fe",
+      "S/Fe",
+      "Zn/Fe"
+    ],
+    "auc": 0.997540653859865,
+    "brier": 0.01523983298542009,
+    "best_k": 25,
+    "best_auc": 0.9976202320683548,
+    "tolerance": 0.00016225171565998334
+  },
+  "observed": {
+    "k": 8,
+    "features": [
+      "Na/Fe",
+      "Mg/Fe",
+      "Ca/Fe",
+      "Cr/Fe",
+      "Si/Fe",
+      "Ti/Fe",
+      "Co/Fe",
+      "Ni/Fe"
+    ],
+    "auc": 0.9710630884423965,
+    "brier": 0.053886489395792665,
+    "best_k": 10,
+    "best_auc": 0.9716130116787252,
+    "tolerance": 0.0006280170035824669
+  }
+}
